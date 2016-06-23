@@ -1,0 +1,5 @@
+include 'Core'
+include 'FertilizerPlantWebApp'
+include 'QrCodeService'
+include 'ProductManagement'
+include 'UserManagement'
