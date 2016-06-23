@@ -10,6 +10,9 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -17,18 +20,20 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
-public class QrCodeGenerateServiceImpl {
+public class DefaultQrCodeGenerateService {
+
+	private static final Logger LOG = LoggerFactory.getLogger(DefaultQrCodeGenerateService.class);
 
 	public void generateQrCode(final String outputFilePath, final String textToBeEncoded, final String fileType,
 			final int size) {
+		
+		LOG.debug("producing qrcode to "+outputFilePath+" with encoded content "+textToBeEncoded);
 		final File outputFile = new File(outputFilePath);
 		try {
 
 			Map<EncodeHintType, Object> hintMap = new EnumMap<EncodeHintType, Object>(EncodeHintType.class);
 			hintMap.put(EncodeHintType.CHARACTER_SET, "UTF-8");
 
-			// Now with zxing version 3.2.1 you could change border size (white
-			// border size to just 1)
 			hintMap.put(EncodeHintType.MARGIN, 1); /* default = 4 */
 			hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
 
@@ -56,6 +61,6 @@ public class QrCodeGenerateServiceImpl {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("\n\nYou have successfully created QR Code.");
+		LOG.debug("You have successfully created QR Code");
 	}
 }
