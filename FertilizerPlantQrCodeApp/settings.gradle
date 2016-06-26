@@ -1,4 +1,4 @@
-include 'Core'
+include 'Common'
 include 'FertilizerPlantWebApp'
 include 'QrcodeManagement'
 include 'ProductManagement'
