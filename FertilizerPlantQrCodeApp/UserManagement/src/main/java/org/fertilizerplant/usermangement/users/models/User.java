@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.fertilizerplant.common.address.models.Address;
+
+
+
+
 @Entity
 public class User {
 	
