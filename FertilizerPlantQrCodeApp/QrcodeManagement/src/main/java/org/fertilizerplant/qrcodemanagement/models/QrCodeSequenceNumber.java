@@ -1,4 +1,4 @@
-package org.fertilizerplant.productmanagement.products.models;
+package org.fertilizerplant.qrcodemanagement.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

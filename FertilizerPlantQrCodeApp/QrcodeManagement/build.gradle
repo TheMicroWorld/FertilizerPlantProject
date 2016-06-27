@@ -1,5 +1,52 @@
+apply plugin:'spring-boot'
+
+ext {
+    generatedSourcesDir = file("${buildDir}/generated")
+    querydslVersion    = "3.7.3"
+}
+
+configurations {
+    querydslapt
+}
+
 dependencies
 {
+	compile project(':Common')
+	
+	dependencies {
 	compile 'com.google.zxing:core:3.2.1'
 	compile 'com.google.zxing:javase:3.2.1'
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("mysql:mysql-connector-java")
+	compile("com.mysema.querydsl:querydsl-jpa:${querydslVersion}")
+	querydslapt("com.mysema.querydsl:querydsl-apt:${querydslVersion}")
+	}
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDir "src/main/java"
+            srcDir generatedSourcesDir
+        }
+    }
+}
+
+task generateQueryDSL(type: JavaCompile, group: 'build', description: 'Generates the QueryDSL query types') {
+    source = sourceSets.main.java
+    classpath = configurations.compile + configurations.querydslapt
+    options.compilerArgs = [
+            "-proc:only",
+            "-processor", "com.mysema.query.apt.jpa.JPAAnnotationProcessor"
+    ]
+    destinationDir = generatedSourcesDir
+}
+compileJava {
+    doFirst {
+        generatedSourcesDir.mkdirs()
+    }
+    options.compilerArgs += ['-s', generatedSourcesDir]
+ 
+    dependsOn generateQueryDSL
 }
