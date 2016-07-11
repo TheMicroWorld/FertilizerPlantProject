@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -19,91 +20,95 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement 
 @PropertySource(value="classpath:common.properties")
-public class PersistenceConfig {
+public class PersistenceConfig implements EnvironmentAware {
 	
-	  @Autowired 
-	  private Environment _env;
+	   private Environment environment;
 
-
-	  @Autowired 
-	  private DataSource _dataSource;
-
-
-	  @Autowired 
-	  private LocalContainerEntityManagerFactoryBean _entityManagerFactory;
-
-
-	  /** 
-	   * DataSource definition for database connection. Settings are read from 
-	   * the application.properties file (using the _env object). 
-	   */ 
-	  @Bean 
+	    @Override
+	    public void setEnvironment(final Environment environment) {
+	        this.environment = environment;
+	    }
+	
+	 /**
+	   * DataSource definition for database connection. Settings are read from
+	   * the application.properties file (using the env object).
+	   */
+	  @Bean
 	  public DataSource dataSource() {
 	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-	    dataSource.setDriverClassName(_env.getProperty("spring.datasource.driver-class-name"));
-	    dataSource.setUrl(_env.getProperty("spring.datasource.url"));
-	    dataSource.setUsername(_env.getProperty("spring.datasource.username"));
-	    dataSource.setPassword(_env.getProperty("spring.datasource.password"));
+	    dataSource.setDriverClassName(env.getProperty("spring.datasource.driverClassName"));
+	    dataSource.setUrl(env.getProperty("spring.datasource.url"));
+	    dataSource.setUsername(env.getProperty("spring.datasource.username"));
+	    dataSource.setPassword(env.getProperty("spring.datasource.password"));
 	    return dataSource;
-	  } 
+	  }
 
-
-	  /** 
-	   * Declare the JPA entity manager factory. 
-	   */ 
-	  @Bean 
-	  public LocalContainerEntityManagerFactoryBean entityManagerFactory() { 
+	  /**
+	   * Declare the JPA entity manager factory.
+	   */
+	  @Bean
+	  public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 	    LocalContainerEntityManagerFactoryBean entityManagerFactory =
-	        new LocalContainerEntityManagerFactoryBean(); 
-
-	    entityManagerFactory.setDataSource(_dataSource);
-
-	    // Classpath scanning of @Component, @Service, etc annotated class 
+	        new LocalContainerEntityManagerFactoryBean();
+	    
+	    entityManagerFactory.setDataSource(dataSource);
+	    
+	    // Classpath scanning of @Component, @Service, etc annotated class
 	    entityManagerFactory.setPackagesToScan(
-	        _env.getProperty("entitymanager.packagesToScan"));
-
-	    // Vendor adapter 
+	        env.getProperty("entitymanager.packagesToScan"));
+	    
+	    // Vendor adapter
 	    HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 	    entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
-
-	    // Hibernate properties 
+	    
+	    // Hibernate properties
 	    Properties additionalProperties = new Properties();
 	    additionalProperties.put(
-	        "hibernate.dialect",  
-	        _env.getProperty("hibernate.dialect"));
+	        "hibernate.dialect", 
+	        env.getProperty("hibernate.dialect"));
 	    additionalProperties.put(
-	        "hibernate.show_sql",  
-	        _env.getProperty("hibernate.show_sql"));
+	        "hibernate.show_sql", 
+	        env.getProperty("hibernate.show_sql"));
 	    additionalProperties.put(
-	        "hibernate.hbm2ddl.auto",  
-	        _env.getProperty("hibernate.hbm2ddl.auto"));
+	        "hibernate.hbm2ddl.auto", 
+	        env.getProperty("hibernate.hbm2ddl.auto"));
 	    entityManagerFactory.setJpaProperties(additionalProperties);
-
+	    
 	    return entityManagerFactory;
-	  } 
+	  }
 
-
-	  /** 
-	   * Declare the transaction manager. 
-	   */ 
-	  @Bean 
-	  public JpaTransactionManager transactionManager() { 
+	  /**
+	   * Declare the transaction manager.
+	   */
+	  @Bean
+	  public JpaTransactionManager transactionManager() {
 	    JpaTransactionManager transactionManager = 
-	        new JpaTransactionManager(); 
+	        new JpaTransactionManager();
 	    transactionManager.setEntityManagerFactory(
-	        _entityManagerFactory.getObject());
+	        entityManagerFactory.getObject());
 	    return transactionManager;
-	  } 
+	  }
+	  
+	  /**
+	   * PersistenceExceptionTranslationPostProcessor is a bean post processor
+	   * which adds an advisor to any bean annotated with Repository so that any
+	   * platform-specific exceptions are caught and then rethrown as one
+	   * Spring's unchecked data access exceptions (i.e. a subclass of 
+	   * DataAccessException).
+	   */
+	  @Bean
+	  public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+	    return new PersistenceExceptionTranslationPostProcessor();
+	  }
 
-	  /** 
-	   * PersistenceExceptionTranslationPostProcessor is a bean post processor 
-	   * which adds an advisor to any bean annotated with Repository so that any 
-	   * platform-specific exceptions are caught and then rethrown as one 
-	   * Spring's unchecked data access exceptions (i.e. a subclass of  
-	   * DataAccessException). 
-	   */ 
-	  @Bean 
-	  public PersistenceExceptionTranslationPostProcessor exceptionTranslation() { 
-	    return new PersistenceExceptionTranslationPostProcessor(); 
-	  } 
+	  // Private fields
+	  
+	  @Autowired
+	  private Environment env;
+
+	  @Autowired
+	  private DataSource dataSource;
+
+	  @Autowired
+	  private LocalContainerEntityManagerFactoryBean entityManagerFactory;
 }

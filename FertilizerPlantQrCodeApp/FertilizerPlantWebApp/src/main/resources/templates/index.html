@@ -1,12 +1,16 @@
-<!Doctype html>
-<html>
-	<head>
-		<title>FertilizerPlant Demo</title>
-		<meta charset="utf-8"/>
-	</head>
-	<body>
-		<div>
-			Output something from controller
-		</div>
-	</body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>化肥厂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8"/>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="bootstrap/js/jquery.js"/>
+<script src="bootstrap/js/bootstrap.min.js"/>
+</head>
+<body>
+	<div th:replace="fragments/common/header :: header">Header</div>
+	<div>Content</div>
+	<div th:replace="fragments/common/footer :: footer">Footer</div>
+</body>
 </html>
