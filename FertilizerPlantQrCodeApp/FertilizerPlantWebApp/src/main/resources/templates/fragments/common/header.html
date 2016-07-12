@@ -1,13 +1,18 @@
 <!Doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 </head>
 <body>
-	<div th:fragment="header">
-		<div class="page-header">
-			<p th:text="#{header.title}">化肥厂经销商管理</p>
+	<div class="header" th:fragment="header">
+		<p th:text="#{page.header}">化肥厂经销商管理</p>
+		<div class="container">
+			<div class="navigation_list"
+				th:with="navigation_list=${#strings.listSplit(#{page.header.navigation_list},',')}">
+				<span th:each="list_item:${navigation_list}" th:text="${list_item}">data</span>
+			</div>
 		</div>
 	</div>
+
 </body>
 </html>

@@ -3,10 +3,8 @@ package org.fertilizerplant.webapp.configs.thymeleaf;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.thymeleaf.dialect.IDialect;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
@@ -32,6 +30,7 @@ public class ThymeleafConfig {
 	    return resolver;
 	}
 
+	@Bean
 	public SpringTemplateEngine templateEngine() {
 	    SpringTemplateEngine engine = new SpringTemplateEngine();
 	    engine.setTemplateResolver(templateResolver());
@@ -53,6 +52,4 @@ public class ThymeleafConfig {
 	    viewResolver.setCache(false);
 	    return viewResolver;
 	}
-	
-
 }
