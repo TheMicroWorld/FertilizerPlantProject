@@ -7,13 +7,14 @@
 	<div class="header" th:fragment="header">
 		<p th:text="#{page.header}">化肥厂经销商管理</p>
 		<div class="container">
-			<div class="navigation_list"
-				th:with="nav_list=#{page.header.navigation_list},navigation_list=${#strings.listSplit(nav_list,',')},
-						links=#{page.header.navigation_list.links},link_list=${#strings.listSplit(links,',')}">
+			<div class="navigation_list">
 				<ul class="nav nav-pills">
-					<li role="presentation" th:each="list_item:${navigation_list}">
-						<a href="#" th:text="${list_item}"></a>
-					</li>
+					<li role="presentation"><a href="#"
+						th:text="#{page.header.navigation.button.product}"></a></li>
+					<li role="presentation"><a href="#"
+						th:text="#{page.header.navigation.button.qrcode}"></a></li>
+					<li role="presentation"><a href="#"
+						th:text="#{page.header.navigation.button.distributor}"></a></li>
 				</ul>
 			</div>
 		</div>
