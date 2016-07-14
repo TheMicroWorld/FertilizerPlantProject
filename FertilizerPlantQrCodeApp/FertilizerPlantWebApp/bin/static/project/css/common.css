@@ -1,0 +1,9 @@
+.header
+{
+    background-color:#ECF3F3;
+    height:30px;    
+}
+.footer{
+ position:fixed;
+ bottom:0;
+}

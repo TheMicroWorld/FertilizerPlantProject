@@ -7,8 +7,8 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4")
 	compile project(":Common")
-	compile project(":ProductManagement")
-	compile project(":UserManagement")
+	compile project(":ProductManagementService")
+	compile project(":UserManagementService")
 
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
