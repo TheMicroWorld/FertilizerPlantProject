@@ -7,17 +7,19 @@
 	<div class="product" th:fragment="add_product">
 		<form role="form">
 			<div class="form-group">
-				<label for="brand" th:text="#{product.brand.name}">品牌名称</label> <input type="text"
-					class="form-control" id="brand"/>
+				<label for="brand" th:text="#{product.brand.name}">品牌名称</label> 
+					<select	class="form-control" id="addproduct_branch_select">
+						<option value="select_add">点击添加</option>
+					</select>
 			</div>
 			<div class="form-group">
-				<label for="quantity" th:text="#{product.warehouse.quantity}">数量</label> <input type="text"
-					class="form-control" id="quantity"/>
+				<label for="quantity" th:text="#{product.warehouse.quantity}">数量</label>
+				<input type="text" class="form-control" id="quantity" />
 			</div>
-			
+
 			<div class="form-group">
-				<label for="unit"  th:text="#{product.unit.name}">单位</label> <input type="text"
-					class="form-control" id="unit"/>
+				<label for="unit" th:text="#{product.unit.name}">单位</label> <input
+					type="text" class="form-control" id="unit" />
 			</div>
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
