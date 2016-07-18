@@ -1,0 +1,13 @@
+﻿<Window x:Class="OneStep.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BindCloud" Height="350" Width="525"
+        WindowStartupLocation="CenterScreen"
+        Loaded="LoadResource">
+    <StackPanel>
+        <DataGrid Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Window>   

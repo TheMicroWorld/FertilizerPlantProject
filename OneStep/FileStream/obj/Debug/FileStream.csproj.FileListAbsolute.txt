@@ -1,0 +1,9 @@
+E:\编程空间\GitHub\OneStep\FileStream\bin\Debug\FileStream.dll
+E:\编程空间\GitHub\OneStep\FileStream\bin\Debug\FileStream.pdb
+E:\编程空间\GitHub\OneStep\FileStream\obj\Debug\FileStream.dll
+E:\编程空间\GitHub\OneStep\FileStream\obj\Debug\FileStream.pdb
+E:\编程空间\GitHub\OneStep\FileStream\obj\Debug\FileStream.csprojResolveAssemblyReference.cache
+E:\ownCareer\OneStep\FileStream\bin\Debug\FileStream.dll
+E:\ownCareer\OneStep\FileStream\bin\Debug\FileStream.pdb
+E:\ownCareer\OneStep\FileStream\obj\Debug\FileStream.dll
+E:\ownCareer\OneStep\FileStream\obj\Debug\FileStream.pdb

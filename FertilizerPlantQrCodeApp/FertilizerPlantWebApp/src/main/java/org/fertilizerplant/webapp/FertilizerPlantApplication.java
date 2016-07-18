@@ -12,10 +12,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
-		DataSourceTransactionManagerAutoConfiguration.class, ThymeleafAutoConfiguration.class,
+@EnableAutoConfiguration(exclude ={ ThymeleafAutoConfiguration.class,
 		MessageSourceAutoConfiguration.class})
-@ComponentScan(basePackages = { "org.fertilizerplant.webapp" })
+@ComponentScan(basePackages = { "org.fertilizerplant" })
 @PropertySource(value = { "classpath:application.properties", "log4j.properties" })
 public class FertilizerPlantApplication {
 

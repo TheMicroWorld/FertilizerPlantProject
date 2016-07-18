@@ -9,12 +9,34 @@
 		<div class="container">
 			<div class="navigation_list">
 				<ul class="nav nav-pills">
-					<li role="presentation"><a th:href="@{#{page.header.navigation.links.product}}"
-						th:text="#{page.header.navigation.button.product}"></a></li>
-					<li role="presentation"><a th:href="@{#{page.header.navigation.links.distributor}}"
-						th:text="#{page.header.navigation.button.qrcode}"></a></li>
-					<li role="presentation"><a th:href="@{#{page.header.navigation.links.qrcode}}"
-						th:text="#{page.header.navigation.button.distributor}"></a></li>
+					<li role="presentation" class="dropdown"><a
+						th:utext="#{page.header.navigation.button.manage_product}"
+						class="dropdown-toggle" data-toggle="dropdown" href="#"
+						role="button" area-expanded="false"> </a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a
+								th:href="@{#{page.header.navigation.links.add_product}}"
+								th:utext="#{page.header.navigation.button.add_product}" /></li>
+						</ul></li>
+					<li role="presentation" class="dropdown"><a
+						th:utext="#{page.header.navigation.button.manage_distributor}"
+						class="dropdown-toggle" data-toggle="dropdown" href="#"
+						role="button" area-expanded="false"> </a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a
+								th:href="@{#{page.header.navigation.links.add_distributor}}"
+								th:utext="#{page.header.navigation.button.add_distributor}" /></li>
+						</ul></li>
+
+					<li role="presentation" class="dropdown"><a
+						th:utext="#{page.header.navigation.button.manage_qrcode}"
+						class="dropdown-toggle" data-toggle="dropdown" href="#"
+						role="button" area-expanded="false"> </a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a
+								th:href="@{#{page.header.navigation.links.generate_qrcode}}"
+								th:utext="#{page.header.navigation.button.generate_qrcode}" /></li>
+						</ul></li>
 				</ul>
 			</div>
 		</div>

@@ -17,9 +17,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
-@EnableTransactionManagement 
-@PropertySource(value="classpath:common.properties")
+
 public class PersistenceConfig implements EnvironmentAware {
 	
 	   private Environment environment;
@@ -51,7 +49,7 @@ public class PersistenceConfig implements EnvironmentAware {
 	    LocalContainerEntityManagerFactoryBean entityManagerFactory =
 	        new LocalContainerEntityManagerFactoryBean();
 	    
-	    entityManagerFactory.setDataSource(dataSource);
+	    entityManagerFactory.setDataSource(dataSource());
 	    
 	    // Classpath scanning of @Component, @Service, etc annotated class
 	    entityManagerFactory.setPackagesToScan(
@@ -85,7 +83,7 @@ public class PersistenceConfig implements EnvironmentAware {
 	    JpaTransactionManager transactionManager = 
 	        new JpaTransactionManager();
 	    transactionManager.setEntityManagerFactory(
-	        entityManagerFactory.getObject());
+	        entityManagerFactory().getObject());
 	    return transactionManager;
 	  }
 	  
@@ -105,10 +103,4 @@ public class PersistenceConfig implements EnvironmentAware {
 	  
 	  @Autowired
 	  private Environment env;
-
-	  @Autowired
-	  private DataSource dataSource;
-
-	  @Autowired
-	  private LocalContainerEntityManagerFactoryBean entityManagerFactory;
 }

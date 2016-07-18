@@ -1,0 +1,32 @@
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="fragment_add_distributor" th:fragment="add_distributor">
+		<form role="form"
+			th:action="@{#{page.header.navigation.links.add_distributor}}"
+			 method="post">
+			<div class="form-group">
+				<label for="add_distributor_name" th:text="#{distributor.add.name.label.name}">经销商姓名</label>
+				<input
+					type="text" class="form-control" id="add_distributor_name" />
+			</div>
+			
+			<div class="form-group">
+				<label for="add_distributor_address" th:text="#{distributor.add.address.label.name}">经销商地址</label>
+				<input
+					type="text" class="form-control" id="add_distributor_address" />
+			</div>
+			
+			<div class="form-group">
+				<label for="add_distributor_address" th:text="#{distributor.add.address.label.name}">增加的</label>
+				<input
+					type="text" class="form-control" id="add_distributor_address" />
+			</div>
+			<button type="submit" class="btn btn-default" th:text="#{distributor.add.save.button.name}">生成二维码</button>
+		</form>
+	</div>
+</body>
+</html>
