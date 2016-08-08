@@ -1,8 +1,0 @@
-E:\编程空间\GitHub\OneStep\DataBaseIO\bin\Debug\DataBaseIO.dll
-E:\编程空间\GitHub\OneStep\DataBaseIO\bin\Debug\DataBaseIO.pdb
-E:\编程空间\GitHub\OneStep\DataBaseIO\obj\Debug\DataBaseIO.dll
-E:\编程空间\GitHub\OneStep\DataBaseIO\obj\Debug\DataBaseIO.pdb
-E:\ownCareer\OneStep\DataBaseIO\bin\Debug\DataBaseIO.dll
-E:\ownCareer\OneStep\DataBaseIO\bin\Debug\DataBaseIO.pdb
-E:\ownCareer\OneStep\DataBaseIO\obj\Debug\DataBaseIO.dll
-E:\ownCareer\OneStep\DataBaseIO\obj\Debug\DataBaseIO.pdb

@@ -76,10 +76,10 @@ public class ProductManagementController {
 		
 		productService.save(product);
 		
-		model.addAttribute("brands", getBrands());
 		
 		//getting all the products
 		List<Product> products = productService.getAllProducts();
+		model.addAttribute("products", products);
 		return LIST_PRODUCT_PAGE;
 	}
 }

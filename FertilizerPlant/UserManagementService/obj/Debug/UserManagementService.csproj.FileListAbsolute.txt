@@ -1,0 +1,5 @@
+E:\ownCareer\FertilizerPlant\UserManagementService\bin\Debug\UserManagementService.dll
+E:\ownCareer\FertilizerPlant\UserManagementService\bin\Debug\UserManagementService.pdb
+E:\ownCareer\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.csprojResolveAssemblyReference.cache
+E:\ownCareer\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.dll
+E:\ownCareer\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.pdb
