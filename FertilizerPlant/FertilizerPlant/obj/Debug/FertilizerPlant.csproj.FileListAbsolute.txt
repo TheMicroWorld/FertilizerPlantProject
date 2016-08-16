@@ -1,1 +1,2 @@
 E:\ownCareer\FertilizerPlant\FertilizerPlant\bin\Debug\FertilizerPlant.exe.config
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\FertilizerPlant.exe.config
