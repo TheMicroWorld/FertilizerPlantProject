@@ -1,0 +1,15 @@
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\QrCodeManagementService.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\QrCodeManagementService.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\Core.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\Iesi.Collections.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\NHibernate.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\ProductManagementService.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\UserManagementService.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\Core.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\ProductManagementService.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\UserManagementService.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\Iesi.Collections.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\NHibernate.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\obj\Debug\QrCodeManagementService.csprojResolveAssemblyReference.cache
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\obj\Debug\QrCodeManagementService.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\obj\Debug\QrCodeManagementService.pdb

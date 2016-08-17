@@ -13,7 +13,11 @@ namespace ProductManagementService.entities.warehouse
         public WarehouseModelMap()
         {
             Table("Warehouses");
-            Id(c => c.Id, map => map.Generator(Generators.Identity));
+            Id(c => c.Id, map =>
+            {
+                map.Generator(Generators.Identity);
+                map.Column("WarehouseId");
+            });
             Property(c => c.Address);
             Bag(c => c.StockLevels, map =>
             {

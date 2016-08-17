@@ -1,0 +1,10 @@
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\Core.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\Core.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\Iesi.Collections.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\NHibernate.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\System.Data.SQLite.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\Iesi.Collections.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\NHibernate.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\System.Data.SQLite.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\obj\Debug\Core.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\obj\Debug\Core.pdb

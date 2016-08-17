@@ -36,7 +36,6 @@ namespace FertilizerPlantWindowsTest.products
             warehouseService = new DefaultWarehouseService();
             ConfigureHibernateMapping();
         }
-
         [Test]
         public void CreateDatabaseSchemaTest()
         {
@@ -56,7 +55,6 @@ namespace FertilizerPlantWindowsTest.products
             var mapper = new ModelMapper();
             mapper.AddMappings(typeof(ProductModelMap).Assembly.GetExportedTypes());
             mapper.AddMappings(typeof(DistributorModelMap).Assembly.GetExportedTypes());
-            mapper.AddMappings(typeof(QrCodeModelMap).Assembly.GetExportedTypes());
 
             hibernateConfig.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), "FertilizerPlantScheme");
             SchemaExport schema = new SchemaExport(hibernateConfig);

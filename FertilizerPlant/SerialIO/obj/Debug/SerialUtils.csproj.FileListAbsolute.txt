@@ -1,0 +1,14 @@
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\SerialIO.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\SerialIO.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\Microsoft.Practices.Unity.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\Microsoft.Practices.Unity.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\obj\Debug\SerialIO.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\obj\Debug\SerialIO.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\SerialIO\obj\Debug\SerialUtils.csprojResolveAssemblyReference.cache

@@ -19,7 +19,7 @@ namespace ProductManagementService.entities.produt
         /// <summary>
         /// one product can have many stock level in different warehouses
         /// </summary>
-        private IList<StockLevelModel> stockLevels;
+        private IList<StockLevelModel> stockLevels = new List<StockLevelModel>();
         public virtual int Id
         {
             get

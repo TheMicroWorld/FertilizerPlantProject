@@ -66,7 +66,7 @@
   <ItemGroup>
     <Compile Include="entities\product\ProductModel.cs" />
     <Compile Include="entities\product\ProductModelMap.cs" />
-    <Compile Include="entities\stock\StockLevelMap.cs" />
+    <Compile Include="entities\stock\StockLevelModelMap.cs" />
     <Compile Include="entities\stock\StockLevelModel.cs" />
     <Compile Include="entities\warehouse\WarehouseModel.cs" />
     <Compile Include="entities\warehouse\WarehouseModelMap.cs" />

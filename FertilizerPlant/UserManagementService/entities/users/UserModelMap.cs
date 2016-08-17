@@ -13,7 +13,11 @@ namespace UserManagementService.users
         public UserModelMap()
         {
             Table("Users");
-            Id(c => c.Id, map => map.Generator(Generators.Identity));
+            Id(c => c.Id, map =>
+            {
+                map.Generator(Generators.Identity);
+                map.Column("UserId");
+            });
             Property(c => c.Address);
             Property(c => c.CellPhone);
             Property(c => c.Name);

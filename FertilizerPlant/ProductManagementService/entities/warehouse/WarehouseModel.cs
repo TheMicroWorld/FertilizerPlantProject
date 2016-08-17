@@ -17,7 +17,7 @@ namespace ProductManagementService.entities.warehouse
         /// <summary>
         /// this is the stock levels of the warehouse
         /// </summary>
-        private IList<StockLevelModel> stockLevels;
+        private IList<StockLevelModel> stockLevels = new List<StockLevelModel>();
 
         public virtual IList<StockLevelModel> StockLevels
         {

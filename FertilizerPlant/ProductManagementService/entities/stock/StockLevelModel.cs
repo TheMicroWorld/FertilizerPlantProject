@@ -19,11 +19,11 @@ namespace ProductManagementService.entities.stock
         /// actually stock level with product is many to one relation.We used
         /// many to many in order to create intermediate table
         /// </summary>
-        private IList<ProductModel> products;
+        private IList<ProductModel> products = new List<ProductModel>();
         /// <summary>
         /// same as product
         /// </summary>
-        private IList<WarehouseModel> warehouses;
+        private IList<WarehouseModel> warehouses = new List<WarehouseModel>();
 
         public virtual int Id
         {

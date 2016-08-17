@@ -13,7 +13,11 @@ namespace ProductManagementService.entities.stock
         public StockLevelModelMap()
         {
             Table("StockLevels");
-            Id(c => c.Id, map => map.Generator(Generators.Identity));
+            Id(c => c.Id, map =>
+            {
+                map.Generator(Generators.Identity);
+                map.Column("StockLevelId");
+            });
             Property(c => c.Amount);
             Bag(c => c.Products, map =>
             {

@@ -3,3 +3,14 @@ E:\ownCareer\FertilizerPlant\UserManagementService\bin\Debug\UserManagementServi
 E:\ownCareer\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.csprojResolveAssemblyReference.cache
 E:\ownCareer\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.dll
 E:\ownCareer\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\bin\Debug\UserManagementService.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\bin\Debug\UserManagementService.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\bin\Debug\Core.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\bin\Debug\Iesi.Collections.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\bin\Debug\NHibernate.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\bin\Debug\Core.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\bin\Debug\Iesi.Collections.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\bin\Debug\NHibernate.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.csprojResolveAssemblyReference.cache
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.pdb

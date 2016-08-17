@@ -17,11 +17,11 @@ namespace QrCodeManagementService.entities.qrcode
         /// <summary>
         /// Many to one 
         /// </summary>
-        private IList<ProductModel> products;
+        private IList<ProductModel> products = new List<ProductModel>();
         /// <summary>
         /// Many to one
         /// </summary>
-        private IList<DistributorModel> distributors;
+        private IList<DistributorModel> distributors = new List<DistributorModel>();
 
         public virtual string EncodedValue
         {
