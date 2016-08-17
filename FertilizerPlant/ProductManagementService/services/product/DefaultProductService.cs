@@ -17,16 +17,30 @@ namespace ProductManagementService.services.product
         {
             NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
             IRepository<ProductModel, int> productRepository = new NHibernateRepository<ProductModel, int>(unitOfWork);
+            productRepository.Add(product);
+            unitOfWork.SaveChanges();
+            unitOfWork.Dispose();
         }
 
         public IList<ProductModel> GetAll()
         {
-            throw new NotImplementedException();
+            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
+            IRepository<ProductModel, int> productRepository = new NHibernateRepository<ProductModel, int>(unitOfWork);
+            IList<ProductModel> products = (List<ProductModel>)productRepository.GetAll();
+            unitOfWork.SaveChanges();//do the commit
+            unitOfWork.Dispose();//dispose unitOfWork
+            return products;
         }
 
         public IList<string> GetAllProductNames()
         {
-            throw new NotImplementedException();
+            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
+            IRepository<ProductModel, int> productRepository = new NHibernateRepository<ProductModel, int>(unitOfWork);
+            IList<ProductModel> products = (List<ProductModel>)productRepository.GetAll();
+            IList<string> productNames = (List<string>)products.Select(p => p.ProductName);
+            unitOfWork.SaveChanges();
+            unitOfWork.Dispose();
+            return productNames;
         }
     }
 }

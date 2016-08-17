@@ -65,17 +65,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="entities\product\ProductModel.cs" />
+    <Compile Include="entities\product\ProductModelMap.cs" />
+    <Compile Include="entities\stock\StockLevelMap.cs" />
     <Compile Include="entities\stock\StockLevelModel.cs" />
     <Compile Include="entities\warehouse\WarehouseModel.cs" />
+    <Compile Include="entities\warehouse\WarehouseModelMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="services\product\DefaultProductService.cs" />
     <Compile Include="services\product\ProductService.cs" />
+    <Compile Include="services\stock\DefaultStockLevelService.cs" />
+    <Compile Include="services\stock\StockLevelService.cs" />
+    <Compile Include="services\warehouse\DefaultWarehouseService.cs" />
+    <Compile Include="services\warehouse\WarehouseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="services\stock\" />
-    <Folder Include="services\warehouse\" />
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{95a241f8-deb4-4f80-adc6-f03cca2c3400}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

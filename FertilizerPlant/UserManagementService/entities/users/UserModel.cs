@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UserManagementService.entities.user
+namespace UserManagementService.users
 {
     public class UserModel
     {
-        private long id;
-        private string name;
-        private string phoneNumber;
+        private int id;
         private string address;
+        private string cellPhone;
+        private string name;
 
-        public virtual long Id
+        public virtual int Id
         {
             get
             {
@@ -23,32 +23,6 @@ namespace UserManagementService.entities.user
             set
             {
                 id = value;
-            }
-        }
-
-        public virtual string Name
-        {
-            get
-            {
-                return name;
-            }
-
-            set
-            {
-                name = value;
-            }
-        }
-
-        public virtual string PhoneNumber
-        {
-            get
-            {
-                return phoneNumber;
-            }
-
-            set
-            {
-                phoneNumber = value;
             }
         }
 
@@ -62,6 +36,32 @@ namespace UserManagementService.entities.user
             set
             {
                 address = value;
+            }
+        }
+
+        public virtual string CellPhone
+        {
+            get
+            {
+                return cellPhone;
+            }
+
+            set
+            {
+                cellPhone = value;
+            }
+        }
+
+        public virtual string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
             }
         }
     }

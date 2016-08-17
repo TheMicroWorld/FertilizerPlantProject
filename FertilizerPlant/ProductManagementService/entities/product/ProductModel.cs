@@ -1,5 +1,4 @@
-﻿using ProductManagementService.entities.brand;
-using ProductManagementService.entities.stock;
+﻿using ProductManagementService.entities.stock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +33,7 @@ namespace ProductManagementService.entities.produt
             }
         }
 
-        public virtual string Product_name
+        public virtual string ProductName
         {
             get
             {

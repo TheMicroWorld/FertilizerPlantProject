@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UserManagementService.entities.distributor
+namespace QrCodeManagementService.entities.qrcode
 {
-    class DistributorModel
+    class QrCodeModelMap
     {
     }
 }

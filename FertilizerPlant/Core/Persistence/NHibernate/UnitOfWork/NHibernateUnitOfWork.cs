@@ -16,6 +16,14 @@ namespace Core.Persistence.NHibernate.UnitOfWork
         private readonly ISession session;
         public ITransaction transaction;
 
+        public ISession Session
+        {
+            get
+            {
+                return session;
+            }
+        }
+
         public NHibernateUnitOfWork(IUnitOfWorkFactory unitOfWorkFactory,ISession session)
         {
             this.unitOfWorkFactory = unitOfWorkFactory;
@@ -28,7 +36,7 @@ namespace Core.Persistence.NHibernate.UnitOfWork
         /// </summary>
         public void BeginTransaction()
         {
-            transaction = session.BeginTransaction(IsolationLevel.ReadCommitted);
+            transaction = Session.BeginTransaction(IsolationLevel.ReadCommitted);
         }
 
         /// <summary>
@@ -37,7 +45,7 @@ namespace Core.Persistence.NHibernate.UnitOfWork
         /// <param name="level">IsolationLevel the transaction should run in.</param>
         public void BeginTransaction(IsolationLevel level)
         {
-            transaction = session.BeginTransaction(level);
+            transaction = Session.BeginTransaction(level);
         }
 
         private bool IsTransactionActive()
@@ -73,9 +81,9 @@ namespace Core.Persistence.NHibernate.UnitOfWork
 
         public void Dispose() // don't know where to call this to see if it will solve my problem
         {
-            if (session.IsOpen)
+            if (Session.IsOpen)
             {
-                session.Close();
+                Session.Close();
             }
         }
 

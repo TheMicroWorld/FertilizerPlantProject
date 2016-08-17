@@ -1,26 +1,24 @@
 ﻿using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
-using ProductManagementService.entities.produt;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductManagementService.entities.product
+namespace ProductManagementService.entities.warehouse
 {
-    public class ProductModelMap : ClassMapping<ProductModel>
+    public class WarehouseModelMap : ClassMapping<WarehouseModel>
     {
-        public ProductModelMap()
+        public WarehouseModelMap()
         {
-            Table("Products");
+            Table("Warehouses");
             Id(c => c.Id, map => map.Generator(Generators.Identity));
-            Property(c=>c.ProductName);
-            Property(c => c.UnitName);
+            Property(c => c.Address);
             Bag(c => c.StockLevels, map =>
             {
-                map.Table("ProductStockLevels");
-                map.Key(k => k.Column("ProductId"));
+                map.Table("WarehouseStockLevels");
+                map.Key(k => k.Column("WarehouseId"));
             }, rel => rel.ManyToMany(m => m.Column("StockLevelId")));
         }
     }

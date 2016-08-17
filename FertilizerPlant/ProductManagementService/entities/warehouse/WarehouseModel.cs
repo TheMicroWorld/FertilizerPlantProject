@@ -44,5 +44,18 @@ namespace ProductManagementService.entities.warehouse
                 id = value;
             }
         }
+
+        public virtual string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
     }
 }
