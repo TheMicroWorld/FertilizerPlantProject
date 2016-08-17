@@ -16,7 +16,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -87,6 +87,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="global\context\ApplicationContext.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -128,6 +129,28 @@
   <ItemGroup>
     <Folder Include="command\" />
     <Folder Include="viewmodel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{95a241f8-deb4-4f80-adc6-f03cca2c3400}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductManagementService\ProductManagementService.csproj">
+      <Project>{fda64aa8-62c8-40d1-9186-e4a64f67ce98}</Project>
+      <Name>ProductManagementService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QrCodeManagementService\QrCodeManagementService.csproj">
+      <Project>{8fb84a77-7fd4-4f20-b910-3448b5e77741}</Project>
+      <Name>QrCodeManagementService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SerialIO\SerialUtils.csproj">
+      <Project>{4ceb30a9-aeb1-4a8b-a9d4-7b57c8f505ae}</Project>
+      <Name>SerialUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserManagementService\UserManagementService.csproj">
+      <Project>{b11ed71d-dd79-41dd-ad59-d8d942d3730d}</Project>
+      <Name>UserManagementService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

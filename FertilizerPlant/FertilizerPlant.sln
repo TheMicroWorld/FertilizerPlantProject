@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FertilizerPlantWindowClient", "FertilizerPlant\FertilizerPlantWindowClient.csproj", "{819E0402-86EA-4C7B-ACA0-ECC2BBF0BE65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialIO", "SerialIO\SerialIO.csproj", "{4CEB30A9-AEB1-4A8B-A9D4-7B57C8F505AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialUtils", "SerialIO\SerialUtils.csproj", "{4CEB30A9-AEB1-4A8B-A9D4-7B57C8F505AE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagementService", "ProductManagementService\ProductManagementService.csproj", "{FDA64AA8-62C8-40D1-9186-E4A64F67CE98}"
 EndProject

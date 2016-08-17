@@ -11,9 +11,18 @@ namespace Core.Persistence.Generic.UnitOfWork
     public static class UnitOfWork
     {
         private static IUnitOfWorkFactory unitOfWorkFactory = new NHibernateUnitOfWorkFactory();
+
+        public static IUnitOfWorkFactory UnitOfWorkFactory
+        {
+            get
+            {
+                return unitOfWorkFactory;
+            }
+        }
+
         public static IUnitOfWork Start()
         {
-            IUnitOfWork unitOfWork = unitOfWorkFactory.Create();
+            IUnitOfWork unitOfWork = UnitOfWorkFactory.Create();
             return unitOfWork;
         }
     }
