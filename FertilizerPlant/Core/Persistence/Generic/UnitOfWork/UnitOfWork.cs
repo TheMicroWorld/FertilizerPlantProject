@@ -13,7 +13,6 @@ namespace Core.Persistence.Generic.UnitOfWork
         private static IUnitOfWorkFactory unitOfWorkFactory = new NHibernateUnitOfWorkFactory();
         public static IUnitOfWork Start()
         {
-
             IUnitOfWork unitOfWork = unitOfWorkFactory.Create();
             return unitOfWork;
         }

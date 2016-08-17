@@ -1,4 +1,5 @@
 ﻿using Core.Persistence.Generic.Repositories;
+using Core.Persistence.NHibernate.UnitOfWork;
 using NHibernate;
 using System;
 using System.Collections.Generic;
@@ -8,13 +9,15 @@ using System.Threading.Tasks;
 
 namespace Core.Persistence.NHibernate.Repositories
 {
-    class NHibernateRepository<TEntity,TKey> : IRepository<TEntity,TKey> where TEntity : class
+    public class NHibernateRepository<TEntity,TKey> : IRepository<TEntity,TKey> where TEntity : class
     {
         private readonly ISession session;
+        private readonly NHibernateUnitOfWork unitOfWork;
 
-        public NHibernateRepository(ISession session)
+        public NHibernateRepository(NHibernateUnitOfWork unitOfWork)
         {
-            this.session = session;
+            this.unitOfWork = unitOfWork;
+            this.session = unitOfWork.Session;
         }
 
         protected ISession Session

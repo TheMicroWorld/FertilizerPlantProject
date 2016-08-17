@@ -12,11 +12,13 @@ using System.Xml;
 
 namespace Core.Persistence.NHibernate.UnitOfWork.Factories
 {
-    class NHibernateUnitOfWorkFactory:IUnitOfWorkFactory
+    /// <summary>
+    ///UnitOfWork Factory is maintained by UnitOfWork Class
+    /// </summary>
+    public class NHibernateUnitOfWorkFactory:IUnitOfWorkFactory
     {
         private static string DEFAULT_HIBERNATE_CONFIG = "hibernate.cfg.xml";
         private Configuration configuration;
-        private static ISession currentSession;
         private ISessionFactory sessionFactory;
 
         internal NHibernateUnitOfWorkFactory()
@@ -27,22 +29,11 @@ namespace Core.Persistence.NHibernate.UnitOfWork.Factories
         {
             return SessionFactory.OpenSession();
         }
-
-        public ISession CurrentSession
-        {
-            get
-            {
-                if (currentSession == null)
-                    throw new InvalidOperationException("You are not in a unit of work.");
-                return currentSession;
-            }
-            set { currentSession = value; }
-        }
         public IUnitOfWork Create()
         {
             ISession session = CreateSession();
-            IUnitOfWork unitOfWork = new NHibernateUnitOfWork(this, session);
-            CurrentSession = session;
+            NHibernateUnitOfWork unitOfWork = new NHibernateUnitOfWork(this, session);
+            unitOfWork.BeginTransaction();
             return unitOfWork;
         }
 
@@ -78,11 +69,6 @@ namespace Core.Persistence.NHibernate.UnitOfWork.Factories
                 }
                 return configuration;
             }
-        }
-        public void DisposeUnitOfWork(IUnitOfWork adapter)
-        {
-            CurrentSession = null;
-            adapter.Dispose();
         }
     }
     

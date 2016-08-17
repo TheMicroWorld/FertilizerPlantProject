@@ -1,4 +1,5 @@
 ﻿using ProductManagementService.entities.brand;
+using ProductManagementService.entities.stock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,18 @@ namespace ProductManagementService.entities.produt
 {
     public class ProductModel
     {
-        private long id;
-        private string product_name;
-        private BrandModel brand;
+        private int id;
+        /// <summary>
+        /// product name
+        /// </summary>
+        private string productName;
         private string unitName;
-        private int quantity;
 
-        public virtual long Id
+        /// <summary>
+        /// one product can have many stock level in different warehouses
+        /// </summary>
+        private IList<StockLevelModel> stockLevels;
+        public virtual int Id
         {
             get
             {
@@ -32,25 +38,12 @@ namespace ProductManagementService.entities.produt
         {
             get
             {
-                return product_name;
+                return productName;
             }
 
             set
             {
-                product_name = value;
-            }
-        }
-
-        public virtual BrandModel Brand
-        {
-            get
-            {
-                return brand;
-            }
-
-            set
-            {
-                brand = value;
+                productName = value;
             }
         }
 
@@ -67,16 +60,16 @@ namespace ProductManagementService.entities.produt
             }
         }
 
-        public virtual int Quantity
+        public virtual IList<StockLevelModel> StockLevels
         {
             get
             {
-                return quantity;
+                return stockLevels;
             }
 
             set
             {
-                quantity = value;
+                stockLevels = value;
             }
         }
     }

@@ -64,15 +64,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="entities\brand\BrandModel.cs" />
     <Compile Include="entities\product\ProductModel.cs" />
+    <Compile Include="entities\stock\StockLevelModel.cs" />
+    <Compile Include="entities\warehouse\WarehouseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="services\product\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="services\" />
+    <Folder Include="services\stock\" />
+    <Folder Include="services\warehouse\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

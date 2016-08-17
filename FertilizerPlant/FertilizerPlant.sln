@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FertilizerPlant", "FertilizerPlant\FertilizerPlant.csproj", "{819E0402-86EA-4C7B-ACA0-ECC2BBF0BE65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FertilizerPlantWindowClient", "FertilizerPlant\FertilizerPlantWindowClient.csproj", "{819E0402-86EA-4C7B-ACA0-ECC2BBF0BE65}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialIO", "SerialIO\SerialIO.csproj", "{4CEB30A9-AEB1-4A8B-A9D4-7B57C8F505AE}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrCodeManagementService", "QrCodeManagementService\QrCodeManagementService.csproj", "{8FB84A77-7FD4-4F20-B910-3448B5E77741}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagementService", "UserManagementService\UserManagementService.csproj", "{B11ED71D-DD79-41DD-AD59-D8D942D3730D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FertilizerPlantWindowsTest", "FertilizerPlantWindowsTest\FertilizerPlantWindowsTest.csproj", "{0FB62F33-4C31-439A-869A-4D84A3D4CA52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{B11ED71D-DD79-41DD-AD59-D8D942D3730D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B11ED71D-DD79-41DD-AD59-D8D942D3730D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B11ED71D-DD79-41DD-AD59-D8D942D3730D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FB62F33-4C31-439A-869A-4D84A3D4CA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FB62F33-4C31-439A-869A-4D84A3D4CA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FB62F33-4C31-439A-869A-4D84A3D4CA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FB62F33-4C31-439A-869A-4D84A3D4CA52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
