@@ -26,6 +26,7 @@ namespace ProductManagementService.entities.product
                 map.Table("ProductStockLevels");
                 map.Key(k => k.Column("ProductId"));
                 map.Cascade(Cascade.Persist);
+                map.Inverse(true);
             }, rel => rel.ManyToMany(m => m.Column("StockLevelId")));
         }
     }

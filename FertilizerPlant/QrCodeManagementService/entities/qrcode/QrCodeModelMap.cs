@@ -18,8 +18,11 @@ namespace QrCodeManagementService.entities.qrcode
                 map.Generator(Generators.Assigned);
                 map.Column("QrCodeId");
             });
-            ManyToOne(c => c.Products, map => map.Column("ProductId"));
-            ManyToOne(c => c.Distributors, map => map.Column("DistributorId"));
+            ManyToOne(c => c.Product, map =>
+            {
+                map.Column("ProductId");
+            });
+            ManyToOne(c => c.Distributor, map => map.Column("DistributorId"));
         }
     }
 }

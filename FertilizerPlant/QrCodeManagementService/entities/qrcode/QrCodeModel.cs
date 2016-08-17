@@ -17,11 +17,11 @@ namespace QrCodeManagementService.entities.qrcode
         /// <summary>
         /// Many to one 
         /// </summary>
-        private IList<ProductModel> products = new List<ProductModel>();
+        private ProductModel product;
         /// <summary>
         /// Many to one
         /// </summary>
-        private IList<DistributorModel> distributors = new List<DistributorModel>();
+        private DistributorModel distributor;
 
         public virtual string EncodedValue
         {
@@ -36,29 +36,29 @@ namespace QrCodeManagementService.entities.qrcode
             }
         }
 
-        public virtual IList<ProductModel> Products
+        public virtual ProductModel Product
         {
             get
             {
-                return products;
+                return product;
             }
 
             set
             {
-                products = value;
+                product = value;
             }
         }
 
-        public virtual IList<DistributorModel> Distributors
+        public virtual DistributorModel Distributor
         {
             get
             {
-                return distributors;
+                return distributor;
             }
 
             set
             {
-                distributors = value;
+                distributor = value;
             }
         }
     }

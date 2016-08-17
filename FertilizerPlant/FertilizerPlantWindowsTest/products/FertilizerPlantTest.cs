@@ -7,6 +7,7 @@ using NUnit.Framework;
 using ProductManagementService.entities.product;
 using ProductManagementService.entities.produt;
 using ProductManagementService.entities.stock;
+using ProductManagementService.entities.warehouse;
 using ProductManagementService.services;
 using ProductManagementService.services.product;
 using ProductManagementService.services.stock;
@@ -48,6 +49,13 @@ namespace FertilizerPlantWindowsTest.products
             product.StockLevels.Add(stockLevel1);
             productService.Add(product);
             stockLevelService.Add(stockLevel1);
+
+            WarehouseModel warehouse = new WarehouseModel();
+            warehouse.Address = "chengdu shi";
+            warehouse.StockLevels.Add(stockLevel1);
+            stockLevel1.Warehouses.Add(warehouse);
+
+            warehouseService.Add(warehouse);
         }
         private void ConfigureHibernateMapping()
         {
@@ -55,6 +63,7 @@ namespace FertilizerPlantWindowsTest.products
             var mapper = new ModelMapper();
             mapper.AddMappings(typeof(ProductModelMap).Assembly.GetExportedTypes());
             mapper.AddMappings(typeof(DistributorModelMap).Assembly.GetExportedTypes());
+            mapper.AddMappings(typeof(QrCodeModel).Assembly.GetExportedTypes());
 
             hibernateConfig.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), "FertilizerPlantScheme");
             SchemaExport schema = new SchemaExport(hibernateConfig);

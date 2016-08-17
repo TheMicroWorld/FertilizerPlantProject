@@ -23,6 +23,7 @@ namespace ProductManagementService.entities.warehouse
             {
                 map.Table("WarehouseStockLevels");
                 map.Key(k => k.Column("WarehouseId"));
+                map.Inverse(false);
             }, rel => rel.ManyToMany(m => m.Column("StockLevelId")));
         }
     }
