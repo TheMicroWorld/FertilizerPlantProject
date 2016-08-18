@@ -60,6 +60,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="command\StartMonitoringCommand.cs" />
     <Compile Include="viewmodel\bindingpage\BindingPageRowDataViewModel.cs" />
     <Compile Include="viewmodel\bindingpage\BindingPageViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -123,9 +125,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="command\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{95a241f8-deb4-4f80-adc6-f03cca2c3400}</Project>

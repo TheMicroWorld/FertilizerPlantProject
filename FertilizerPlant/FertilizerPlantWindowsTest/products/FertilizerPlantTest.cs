@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UserManagementService.entities.distributors;
+using UserManagementService.services.distributors;
 
 namespace FertilizerPlantWindowsTest.products
 {
@@ -28,6 +29,7 @@ namespace FertilizerPlantWindowsTest.products
         private ProductService productService;
         private StockLevelService stockLevelService;
         private WarehouseService warehouseService;
+        private DistributorService distributorService;
         
         [SetUp]
         public void SetUp()
@@ -35,6 +37,7 @@ namespace FertilizerPlantWindowsTest.products
             productService = new DefaultProductService();
             stockLevelService = new DefaultStockLevelService();
             warehouseService = new DefaultWarehouseService();
+            distributorService = new DefaultDistributorService();
             ConfigureHibernateMapping();
         }
         [Test]
@@ -56,6 +59,12 @@ namespace FertilizerPlantWindowsTest.products
             stockLevel1.Warehouses.Add(warehouse);
 
             warehouseService.Add(warehouse);
+
+            IList<string> productNames = productService.GetAllProductNames();
+            Console.WriteLine(productNames);
+
+           IList<string> distributorNames = distributorService.GetAllDistributorNames();
+           Console.WriteLine(distributorNames);
         }
         private void ConfigureHibernateMapping()
         {

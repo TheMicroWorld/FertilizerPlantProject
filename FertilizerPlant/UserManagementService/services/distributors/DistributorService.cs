@@ -10,5 +10,6 @@ namespace UserManagementService.services.distributors
     public interface DistributorService
     {
         void Add(DistributorModel model);
+        IList<string> GetAllDistributorNames();
     }
 }

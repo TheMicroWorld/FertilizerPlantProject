@@ -3,11 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FertilizerPlant"
+        xmlns:local="clr-namespace:FertilizerPlant.viewmodel.bindingpage"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:BindingPageViewModel x:Key="BindingPageViewModel"/>
+    </Window.Resources>
     <Grid>
-        <DataGrid Name="" AutoGenerateColumns="False">
+        <DataGrid Name="BindingPageDG" AutoGenerateColumns="true">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="端口" Binding="{Binding PortId}" />
+                <DataGridTemplateColumn Header="监控状态">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>

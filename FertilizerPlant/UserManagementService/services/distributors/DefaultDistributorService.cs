@@ -11,7 +11,7 @@ using UserManagementService.entities.distributors;
 
 namespace UserManagementService.services.distributors
 {
-    public class DefaultDistributorService
+    public class DefaultDistributorService : DistributorService
     {
         public void Add(DistributorModel distributor)
         {
@@ -20,6 +20,17 @@ namespace UserManagementService.services.distributors
             distributorRepository.Add(distributor);
             unitOfWork.SaveChanges();
             unitOfWork.Dispose();
+        }
+
+        public IList<string> GetAllDistributorNames()
+        {
+            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
+            IRepository<DistributorModel, int> distributorRepository = new NHibernateRepository<DistributorModel, int>(unitOfWork);
+            IList<DistributorModel> distributors = (List<DistributorModel>)distributorRepository.GetAll();
+            IList<string> distributorNames = distributors.Select(d => d.Name).ToList();
+            unitOfWork.SaveChanges();
+            unitOfWork.Dispose();
+            return distributorNames;
         }
     }
 }

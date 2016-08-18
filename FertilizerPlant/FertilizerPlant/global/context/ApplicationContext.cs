@@ -7,6 +7,7 @@ using ProductManagementService.entities.product;
 using QrCodeManagementService.entities.qrcode;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,15 +15,15 @@ using UserManagementService.entities.distributors;
 
 namespace FertilizerPlant.global.context
 {
-    public class ApplicationContext
+    /// <summary>
+    /// This class contains the global setting of the applcation,including the
+    /// global configuration of the windows application
+    /// </summary>
+    public static class ApplicationContext
     {
-        public ApplicationContext()
+        public static void ConfigureHibernateMapping()
         {
-            ConfigureHibernateMapping();
-        }
-        public void ConfigureHibernateMapping()
-        {
-            Configuration hibernateConfig = (UnitOfWork.UnitOfWorkFactory as NHibernateUnitOfWorkFactory).Configuration;
+            NHibernate.Cfg.Configuration hibernateConfig = (UnitOfWork.UnitOfWorkFactory as NHibernateUnitOfWorkFactory).Configuration;
             var mapper = new ModelMapper();
             mapper.AddMappings(typeof(ProductModelMap).Assembly.GetExportedTypes());
             mapper.AddMappings(typeof(DistributorModelMap).Assembly.GetExportedTypes());
@@ -32,14 +33,19 @@ namespace FertilizerPlant.global.context
             SchemaExport schema = new SchemaExport(hibernateConfig);
             schema.Create(false, true);
         }
-        public void SynchronizeRemoteToLocalDatabase()
+        public static void SynchronizeRemoteToLocalDatabase()
         {
             return;
         }
 
-        public void SynchronizeLocalToRemoteDatabase()
+        public static void SynchronizeLocalToRemoteDatabase()
         {
             return;
+        }
+
+        public static IList<string> GetConfiguredComPorts()
+        {
+            return ConfigurationManager.AppSettings["PORTS"].Split(',').ToList<string>();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace ProductManagementService.services.product
             NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
             IRepository<ProductModel, int> productRepository = new NHibernateRepository<ProductModel, int>(unitOfWork);
             IList<ProductModel> products = (List<ProductModel>)productRepository.GetAll();
-            IList<string> productNames = (List<string>)products.Select(p => p.ProductName);
+            IList<string> productNames = products.Select(p => p.ProductName).ToList();
             unitOfWork.SaveChanges();
             unitOfWork.Dispose();
             return productNames;

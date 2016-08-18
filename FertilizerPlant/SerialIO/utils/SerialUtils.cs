@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace SerialIO.utils
 {
-    public  class SerialUtils
+    public class SerialUtils
     {
+        public enum DeviceStatus
+        {
+            DISCONNECTED,
+            CONNECTED,
+            STOPPED,
+            MONITORING,
+        };
         /// <summary>
         /// Open and return a serial port.If there is no device connected.There will be exception thrown out
         /// </summary>
