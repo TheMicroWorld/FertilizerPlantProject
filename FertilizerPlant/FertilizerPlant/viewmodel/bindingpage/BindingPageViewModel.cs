@@ -9,6 +9,12 @@ using ProductManagementService.services;
 using UserManagementService.services.distributors;
 using FertilizerPlant.global.context;
 using ProductManagementService.services.product;
+using ProductManagementService.entities.produt;
+using UserManagementService.entities.distributors;
+using ProductManagementService.entities.stock;
+using ProductManagementService.services.stock;
+using ProductManagementService.services.warehouse;
+using ProductManagementService.entities.warehouse;
 
 namespace FertilizerPlant.viewmodel.bindingpage
 {
@@ -17,7 +23,7 @@ namespace FertilizerPlant.viewmodel.bindingpage
     /// </summary>
     public class BindingPageViewModel
     {
-        private IList<BindingPageRowDataViewModel> bindingPageData;
+        private IList<BindingPageRowDataViewModel> bindingPageData = new List<BindingPageRowDataViewModel>();
         /// <summary>
         /// product service to get the products
         /// </summary>
@@ -35,12 +41,9 @@ namespace FertilizerPlant.viewmodel.bindingpage
         {
             get
             {
+                GenerateProductAndDistributorSampleData();
+                RetriveBindingPageRowData();
                 return bindingPageData;
-            }
-
-            set
-            {
-                bindingPageData = value;
             }
         }
 
@@ -70,7 +73,7 @@ namespace FertilizerPlant.viewmodel.bindingpage
             }
         }
 
-        private void SetBindingPageViewData()
+        private void RetriveBindingPageRowData()
         {
             IList<string> ports = ApplicationContext.GetConfiguredComPorts();
             foreach(string port in ports)
@@ -80,8 +83,48 @@ namespace FertilizerPlant.viewmodel.bindingpage
                 rowData.DeviceStatus = DeviceStatus.DISCONNECTED;
                 rowData.ProductNames = ProductService.GetAllProductNames();
                 rowData.DistributorNames = DistributorService.GetAllDistributorNames();
-                rowData.coun
+                rowData.BindedCount = 10;
+                bindingPageData.Add(rowData);
             }
+            Console.Write("THe number of row data is " + bindingPageData.Count);
+        }
+
+        private void GenerateProductAndDistributorSampleData()
+        {
+            StockLevelService stockLevelService = new DefaultStockLevelService();
+            WarehouseService warehouseService = new DefaultWarehouseService();
+            ProductModel product = new ProductModel();
+            product.ProductName = "可口可乐";
+
+            ProductModel product1 = new ProductModel();
+            product1.ProductName = "黄老吉";
+
+            ProductModel product2 = new ProductModel();
+            product2.ProductName = "涨价玩";
+
+            ProductModel product3 = new ProductModel();
+            product3.ProductName = "直至牛肉";
+
+            productService.Add(product);
+            productService.Add(product1);
+            productService.Add(product2);
+            productService.Add(product3);
+
+            IList<string> productNames = productService.GetAllProductNames();
+            Console.WriteLine(productNames);
+
+            DistributorModel distributor = new DistributorModel();
+            distributor.Name = "黄凯";
+            DistributorModel distributor1 = new DistributorModel();
+
+            distributor1.Name = "德阳";
+            DistributorModel distributor2 = new DistributorModel();
+
+            distributor2.Name = "黄芪";
+
+            distributorService.Add(distributor);
+            distributorService.Add(distributor1);
+            distributorService.Add(distributor2);
         }
     }
 }

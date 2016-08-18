@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FertilizerPlant.global.context;
+using ProductManagementService.entities.produt;
+using ProductManagementService.entities.stock;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +16,10 @@ namespace FertilizerPlant
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            //init the application context
+            ApplicationContext.ConfigureHibernateMapping();
+        }
     }
 }

@@ -87,5 +87,18 @@ namespace FertilizerPlant.viewmodel.bindingpage
                 deviceStatus = value;
             }
         }
+
+        public int BindedCount
+        {
+            get
+            {
+                return bindedCount;
+            }
+
+            set
+            {
+                bindedCount = value;
+            }
+        }
     }
 }

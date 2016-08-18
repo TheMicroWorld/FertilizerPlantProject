@@ -63,6 +63,12 @@ namespace FertilizerPlantWindowsTest.products
             IList<string> productNames = productService.GetAllProductNames();
             Console.WriteLine(productNames);
 
+            DistributorModel distributor = new DistributorModel();
+            distributor.Name = "黄凯";
+            distributor.Address = "贵州";
+
+            distributorService.Add(distributor);
+
            IList<string> distributorNames = distributorService.GetAllDistributorNames();
            Console.WriteLine(distributorNames);
         }

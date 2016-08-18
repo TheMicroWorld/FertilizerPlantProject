@@ -38,7 +38,7 @@ namespace FertilizerPlant.global.context
             return;
         }
 
-        public static void SynchronizeLocalToRemoteDatabase()
+        public static  void SynchronizeLocalToRemoteDatabase()
         {
             return;
         }
