@@ -16,10 +16,26 @@ namespace QrCodeManagementService.services.qrcode
         public void Add(QrCodeModel qrCode)
         {
             NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
-            IRepository<QrCodeModel, int> qrCodeRepository = new NHibernateRepository<QrCodeModel, int>(unitOfWork);
+            IRepository<QrCodeModel, string> qrCodeRepository = new NHibernateRepository<QrCodeModel, string>(unitOfWork);
             qrCodeRepository.Add(qrCode);
             unitOfWork.SaveChanges();
             unitOfWork.Dispose();
         }
+
+        public QrCodeModel FindById(string qrCodeId)
+        {
+            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
+            IRepository<QrCodeModel, string> qrCodeRepository = new NHibernateRepository<QrCodeModel, string>(unitOfWork);
+            QrCodeModel qrCodeModel = qrCodeRepository.Get(qrCodeId);
+            unitOfWork.SaveChanges();
+            unitOfWork.Dispose();
+            return qrCodeModel;
+        }
+
+        public void Update(QrCodeModel qrCode)
+        {
+            Add(qrCode);
+        }
+
     }
 }

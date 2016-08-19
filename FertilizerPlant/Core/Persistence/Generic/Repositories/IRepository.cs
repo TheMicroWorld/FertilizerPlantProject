@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 namespace Core.Persistence.Generic.Repositories
 {
     public interface IRepository<TEntity,in TKey> where TEntity : class

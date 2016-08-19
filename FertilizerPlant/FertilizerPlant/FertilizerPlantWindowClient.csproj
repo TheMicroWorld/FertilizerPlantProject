@@ -84,7 +84,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="bindingproxy\BindingProxy.cs" />
-    <Compile Include="viewmodel\command\StartMonitoringCommand.cs" />
+    <Compile Include="viewmodel\command\combobox\SelectionChangedCommand.cs" />
+    <Compile Include="viewmodel\command\radiobutton\StartMonitoringCommand.cs" />
     <Compile Include="viewmodel\bindingpage\BindingPageRowDataViewModel.cs" />
     <Compile Include="viewmodel\bindingpage\BindingPageViewModel.cs" />
     <Compile Include="viewmodel\converters\StartMonitoringConverter.cs" />

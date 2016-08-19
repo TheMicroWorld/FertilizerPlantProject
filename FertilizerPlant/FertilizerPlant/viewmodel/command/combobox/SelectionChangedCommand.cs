@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FertilizerPlant.viewmodel.command.combobox
 {
-    public class 
+    public class SelectionChangedCommand
     {
     }
 }

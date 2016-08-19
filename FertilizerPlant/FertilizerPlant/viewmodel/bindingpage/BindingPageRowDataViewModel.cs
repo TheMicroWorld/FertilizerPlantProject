@@ -9,6 +9,10 @@ using static SerialIO.utils.SerialUtils;
 using SerialIO.utils;
 using FertilizerPlant.viewmodel;
 using System.ComponentModel;
+using FertilizerPlant.viewmodel.command.radiobutton;
+using System.IO.Ports;
+using System.Windows;
+using System.Threading;
 
 namespace FertilizerPlant.viewmodel.bindingpage
 {
@@ -42,6 +46,43 @@ namespace FertilizerPlant.viewmodel.bindingpage
         /// this represent the radio button to be used to start the binding
         /// </summary>
         private bool startedBinding=false;
+
+        private StartMonitoringCommand startMonitoringCommand;
+
+        private string selectedProduct;
+        private string selectedDistributor;
+        /// <summary>
+        /// first i have to check if the port can be opened or not.
+        /// If i can not be opened,I need actually give a message box
+        /// indicating some error
+        /// </summary>
+        /// <returns></returns>
+        public bool CanStartPort()
+        {
+            try
+            {
+                SerialPort port = SerialUtils.Open(portId, 9600);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("设备不能打开,设备插入啦吗?");
+                return false;
+            }
+            StartedBinding = true;
+            return true;
+        }
+
+        /// <summary>
+        /// WHen this method is executed,that means the port is already opened.
+        /// In this thread,all we need to do is bind the data received event to the port
+        /// </summary>
+        public void StartMonitoringPort()
+        {
+            StartBindingProductWithDistributor();
+        }
+        /// <summary>
+        /// I should start a read and bind thread
+        /// </summary>
 
         public string PortId
         {
@@ -130,6 +171,19 @@ namespace FertilizerPlant.viewmodel.bindingpage
             }
         }
 
+        public StartMonitoringCommand StartMonitoringCommand
+        {
+            get
+            {
+                return startMonitoringCommand;
+            }
+
+            set
+            {
+                startMonitoringCommand = value;
+            }
+        }
+
         #region INotifyPropertyChanged Members
         /// <summary>
         /// this function will get called when property changed
@@ -144,6 +198,51 @@ namespace FertilizerPlant.viewmodel.bindingpage
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region Processing Binding Logic
+        private static IList<string> collectedQrCodes = new List<string>();
+
+        private string selectedProduct;
+        private string selectedDistributor;
+        /// <summary>
+        /// this method start the real binding
+        /// </summary>
+        private void StartBinding()
+        {
+            lock (lock_object)
+            {
+                if (collectedQrCodes.Count == 0)
+                {
+                    Monitor.Wait(lock_object);
+                }
+                //I need to get the selected product,and distributor
+                string qrCode = collectedQrCodes[collectedQrCodes.Count - 1];
+                collectedQrCodes.RemoveAt(collectedQrCodes.Count - 1);
+            }
+        }
+
+        /// <summary>
+        /// we start the binding thread
+        /// </summary>
+        private void StartBindingProductWithDistributor()
+        {
+            Thread thread = new Thread(() => StartBindingThread());
+            thread.Start();
+        }
+        /// <summary>
+        /// data received event handler of the serial port
+        /// </summary>
+        private readonly object lock_object;
+        private void DataReceivedEventHandler(object sender, SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            string indata = sp.ReadExisting();
+            lock (lock_object)
+            {
+                collectedQrCodes.Add(indata);
+            }
+        }
         #endregion
     }
 }

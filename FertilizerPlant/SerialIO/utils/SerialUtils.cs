@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SerialIO.utils
 {
-    public class SerialUtils
+    public static class SerialUtils
     {
-        public enum DeviceStatus
+        public  enum DeviceStatus
         {
             DISCONNECTED,
             CONNECTED,
@@ -22,7 +22,7 @@ namespace SerialIO.utils
         /// <param name="comId"></param>
         /// <param name="baudRate"></param>
         /// <returns></returns>
-        public SerialPort Open(string comId, int baudRate)
+        public static  SerialPort Open(string comId, int baudRate)
         {
             SerialPort port = new SerialPort(comId, baudRate, Parity.None, 8, StopBits.One);
             port.Open();

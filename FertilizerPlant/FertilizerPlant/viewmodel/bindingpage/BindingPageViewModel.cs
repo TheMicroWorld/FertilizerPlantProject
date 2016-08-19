@@ -16,6 +16,8 @@ using ProductManagementService.services.stock;
 using ProductManagementService.services.warehouse;
 using ProductManagementService.entities.warehouse;
 using Remotion.Linq.Collections;
+using System.IO.Ports;
+using System.Threading;
 
 namespace FertilizerPlant.viewmodel.bindingpage
 {
@@ -33,6 +35,51 @@ namespace FertilizerPlant.viewmodel.bindingpage
         /// distributor service to get distributors
         /// </summary>
         private  DistributorService distributorService;
+
+        private string selectedProduct;
+        private string selectedDistributor;
+
+        private IList<string> collectedQrCodes = new List<string>();
+
+        /// <summary>
+        /// this method start the real binding
+        /// </summary>
+        private void StartBinding()
+        {
+            lock(lock_object)
+            {
+                if(collectedQrCodes.Count == 0)
+                {
+                    Monitor.Wait(lock_object);
+                }              
+            }
+        }
+
+        /// <summary>
+        /// we start the binding thread
+        /// </summary>
+        private void StartBindingProductWithDistributor()
+        {
+            Thread thread = new Thread(() => StartBindingThread());
+            thread.Start();
+        }
+        /// <summary>
+        /// data received event handler of the serial port
+        /// </summary>
+        private readonly object lock_object;
+        private void DataReceivedEventHandler(object sender,SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            string indata = sp.ReadExisting();
+            lock(lock_object)
+            {
+                collectedQrCodes.Add(indata);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public BindingPageViewModel()
         {
             ProductService = new DefaultProductService();
@@ -84,6 +131,7 @@ namespace FertilizerPlant.viewmodel.bindingpage
                 rowData.DeviceStatus = DeviceStatus.DISCONNECTED;
                 rowData.ProductNames = ProductService.GetAllProductNames();
                 rowData.DistributorNames = DistributorService.GetAllDistributorNames();
+                rowData.StartMonitoringCommand = new command.radiobutton.StartMonitoringCommand(rowData.CanStartPort, rowData.StartMonitoringPort);
                 rowData.BindedCount = 10;
                 bindingPageData.Add(rowData);
             }
