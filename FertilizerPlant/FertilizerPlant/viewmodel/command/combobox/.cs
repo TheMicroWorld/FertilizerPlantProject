@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FertilizerPlant.command
+namespace FertilizerPlant.viewmodel.command.combobox
 {
-    class StartMonitoringCommand
+    public class 
     {
     }
 }

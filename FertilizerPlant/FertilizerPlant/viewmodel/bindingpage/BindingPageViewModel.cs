@@ -15,6 +15,7 @@ using ProductManagementService.entities.stock;
 using ProductManagementService.services.stock;
 using ProductManagementService.services.warehouse;
 using ProductManagementService.entities.warehouse;
+using Remotion.Linq.Collections;
 
 namespace FertilizerPlant.viewmodel.bindingpage
 {
@@ -23,7 +24,7 @@ namespace FertilizerPlant.viewmodel.bindingpage
     /// </summary>
     public class BindingPageViewModel
     {
-        private IList<BindingPageRowDataViewModel> bindingPageData = new List<BindingPageRowDataViewModel>();
+        private ObservableCollection<BindingPageRowDataViewModel> bindingPageData = new ObservableCollection<BindingPageRowDataViewModel>();
         /// <summary>
         /// product service to get the products
         /// </summary>

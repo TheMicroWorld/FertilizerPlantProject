@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 using UserManagementService.services.distributors;
 using static SerialIO.utils.SerialUtils;
 using SerialIO.utils;
+using FertilizerPlant.viewmodel;
+using System.ComponentModel;
 
 namespace FertilizerPlant.viewmodel.bindingpage
 {
     /// <summary>
     /// This is the row view data model of qr binding page
     /// </summary>
-    public class BindingPageRowDataViewModel
+    public class BindingPageRowDataViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// COM Id
@@ -36,6 +38,11 @@ namespace FertilizerPlant.viewmodel.bindingpage
         /// </summary>
         private int bindedCount;
 
+        /// <summary>
+        /// this represent the radio button to be used to start the binding
+        /// </summary>
+        private bool startedBinding=false;
+
         public string PortId
         {
             get
@@ -45,7 +52,11 @@ namespace FertilizerPlant.viewmodel.bindingpage
 
             set
             {
-                portId = value;
+                if (portId != value)
+                {
+                    this.portId = value;
+                    this.OnPropertyChanged("PortId");
+                }
             }
         }
 
@@ -100,5 +111,39 @@ namespace FertilizerPlant.viewmodel.bindingpage
                 bindedCount = value;
             }
         }
+
+        public bool StartedBinding
+        {
+            get
+            {
+                return startedBinding;
+            }
+
+            set
+            {
+                if (startedBinding != value)
+                {
+                    //when i try to set the value of start binding.We should 
+                    this.startedBinding = value;
+                    this.OnPropertyChanged("StartedBinding");
+                }
+            }
+        }
+
+        #region INotifyPropertyChanged Members
+        /// <summary>
+        /// this function will get called when property changed
+        /// </summary>
+        /// <param name="v"></param>
+        private void OnPropertyChanged(string v)
+        {
+            if (this.PropertyChanged != null)
+            {
+                Console.WriteLine("v property changed to " + v);
+                this.PropertyChanged(this, new PropertyChangedEventArgs(v));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
     }
 }

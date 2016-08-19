@@ -3,23 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:localpage="clr-namespace:FertilizerPlant.viewmodel.bindingpage"
-        xmlns:localproxy="clr-namespace:FertilizerPlant.bindingproxy"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:localbindingpage="clr-namespace:FertilizerPlant.viewmodel.bindingpage"
+        xmlns:localconverter="clr-namespace:FertilizerPlant.viewmodel.converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="697.8">
     <Window.Resources>
-        <localpage:BindingPageViewModel x:Key="BindingPageViewModel"/>
+        <localbindingpage:BindingPageViewModel x:Key="BindingPageViewModel"/>
+        <localconverter:StartMonitoringConverter x:Key="StartMonitoringConverter"/>
     </Window.Resources>
-    <Grid DataContext="{DynamicResource  BindingPageViewModel}">
-        <DataGrid DataContext="{Binding BindingPageData}"  ItemsSource="{Binding}" Name="BindingPageDG" AutoGenerateColumns="False" Margin="6,2,0.4,-0.2" Grid.ColumnSpan="2" CanUserAddRows="false">
+    <Grid DataContext="{DynamicResource  BindingPageViewModel}" Margin="0,0,-1.8,-12.2">
+        <DataGrid DataContext="{Binding BindingPageData}"  ItemsSource="{Binding}" Name="BindingPageDG" AutoGenerateColumns="False" Margin="6,2,5,16" CanUserAddRows="false">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="端口" Binding="{Binding PortId}" Width="*"/>
+                <DataGridTextColumn IsReadOnly="True" Header="端口" Binding="{Binding PortId}" Width="*"/>
                 <DataGridTemplateColumn Header="监控状态" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton>启动监控</RadioButton>
-                                <RadioButton>停止监控</RadioButton>
+                                <RadioButton  IsChecked="{Binding StartedBinding,Mode=TwoWay,Converter={StaticResource StartMonitoringConverter}, ConverterParameter=true,UpdateSourceTrigger=PropertyChanged}" >启动监控</RadioButton>
+                                <RadioButton  IsChecked="{Binding StartedBinding,Mode=TwoWay,Converter={StaticResource StartMonitoringConverter}, ConverterParameter=false,UpdateSourceTrigger=PropertyChanged}">停止监控</RadioButton>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -27,19 +29,27 @@
                 <DataGridTemplateColumn Header="产品列表" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding ProductNames}"/>
+                            <ComboBox ItemsSource="{Binding ProductNames}" SelectedIndex="1">
+                                <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}"/>
+                                        </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="经销商列表" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding DistributorNames}"/>
+                            <ComboBox ItemsSource="{Binding DistributorNames}" SelectedIndex="1"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="绑定数量"/>
+                <DataGridTextColumn IsReadOnly="True" Header="绑定数量">
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Hello World" Template="{DynamicResource CTGelButton}"/>
     </Grid>
 </Window>

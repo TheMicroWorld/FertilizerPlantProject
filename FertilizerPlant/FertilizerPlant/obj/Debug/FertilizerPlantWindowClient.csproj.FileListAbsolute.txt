@@ -4,7 +4,6 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\FertilizerPlant.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Core.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Iesi.Collections.dll
-E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
@@ -20,8 +19,6 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\SerialIO.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\UserManagementService.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Iesi.Collections.xml
-E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
-E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
@@ -40,3 +37,14 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\obj\Debug\FertilizerPlantWindowClient.csproj.GenerateResource.Cache
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\obj\Debug\FertilizerPlant.exe
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\obj\Debug\FertilizerPlant.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\System.Windows.Interactivity.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\de\System.Windows.Interactivity.resources.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\en\System.Windows.Interactivity.resources.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\es\System.Windows.Interactivity.resources.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\it\System.Windows.Interactivity.resources.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
