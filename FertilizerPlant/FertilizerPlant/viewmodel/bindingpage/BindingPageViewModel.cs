@@ -36,46 +36,6 @@ namespace FertilizerPlant.viewmodel.bindingpage
         /// </summary>
         private  DistributorService distributorService;
 
-        private string selectedProduct;
-        private string selectedDistributor;
-
-        private IList<string> collectedQrCodes = new List<string>();
-
-        /// <summary>
-        /// this method start the real binding
-        /// </summary>
-        private void StartBinding()
-        {
-            lock(lock_object)
-            {
-                if(collectedQrCodes.Count == 0)
-                {
-                    Monitor.Wait(lock_object);
-                }              
-            }
-        }
-
-        /// <summary>
-        /// we start the binding thread
-        /// </summary>
-        private void StartBindingProductWithDistributor()
-        {
-            Thread thread = new Thread(() => StartBindingThread());
-            thread.Start();
-        }
-        /// <summary>
-        /// data received event handler of the serial port
-        /// </summary>
-        private readonly object lock_object;
-        private void DataReceivedEventHandler(object sender,SerialDataReceivedEventArgs e)
-        {
-            SerialPort sp = (SerialPort)sender;
-            string indata = sp.ReadExisting();
-            lock(lock_object)
-            {
-                collectedQrCodes.Add(indata);
-            }
-        }
 
         /// <summary>
         /// 

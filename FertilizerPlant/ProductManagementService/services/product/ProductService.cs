@@ -12,5 +12,7 @@ namespace ProductManagementService.services
         IList<ProductModel> GetAll();
         IList<string> GetAllProductNames();
         void Add(ProductModel product);
+
+        ProductModel FindByProductName(string productName);
     }
 }

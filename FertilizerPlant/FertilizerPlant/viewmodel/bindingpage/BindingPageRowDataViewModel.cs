@@ -78,7 +78,7 @@ namespace FertilizerPlant.viewmodel.bindingpage
         /// </summary>
         public void StartMonitoringPort()
         {
-            StartBindingProductWithDistributor();
+
         }
         /// <summary>
         /// I should start a read and bind thread
@@ -208,28 +208,7 @@ namespace FertilizerPlant.viewmodel.bindingpage
         /// <summary>
         /// this method start the real binding
         /// </summary>
-        private void StartBinding()
-        {
-            lock (lock_object)
-            {
-                if (collectedQrCodes.Count == 0)
-                {
-                    Monitor.Wait(lock_object);
-                }
-                //I need to get the selected product,and distributor
-                string qrCode = collectedQrCodes[collectedQrCodes.Count - 1];
-                collectedQrCodes.RemoveAt(collectedQrCodes.Count - 1);
-            }
-        }
-
-        /// <summary>
-        /// we start the binding thread
-        /// </summary>
-        private void StartBindingProductWithDistributor()
-        {
-            Thread thread = new Thread(() => StartBindingThread());
-            thread.Start();
-        }
+      
         /// <summary>
         /// data received event handler of the serial port
         /// </summary>

@@ -22,6 +22,16 @@ namespace ProductManagementService.services.product
             unitOfWork.Dispose();
         }
 
+        /// <summary>
+        /// This function will try to find the product by name.Actually i should set the product name as the primary key
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <returns></returns>
+        public ProductModel FindByProductName(string productName)
+        {
+            return new entities.produt.ProductModel();
+        }
+
         public IList<ProductModel> GetAll()
         {
             NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();

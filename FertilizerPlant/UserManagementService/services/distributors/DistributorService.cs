@@ -11,5 +11,7 @@ namespace UserManagementService.services.distributors
     {
         void Add(DistributorModel model);
         IList<string> GetAllDistributorNames();
+
+        DistributorModel FindDistributorByName();
     }
 }

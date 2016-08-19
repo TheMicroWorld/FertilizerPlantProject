@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace QrCodeManagementService.services.binding
 {
-    class BindingService
+    public interface BindingService
     {
+        bool bindProductToDistributor(string qrCode, string productName, string distributorName);
+        void StartBindingService();
     }
 }

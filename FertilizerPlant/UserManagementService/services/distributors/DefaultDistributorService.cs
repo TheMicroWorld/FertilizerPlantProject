@@ -22,6 +22,11 @@ namespace UserManagementService.services.distributors
             unitOfWork.Dispose();
         }
 
+        public DistributorModel FindDistributorByName()
+        {
+            return new DistributorModel();
+        }
+
         public IList<string> GetAllDistributorNames()
         {
             NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
@@ -32,5 +37,6 @@ namespace UserManagementService.services.distributors
             unitOfWork.Dispose();
             return distributorNames;
         }
+
     }
 }
