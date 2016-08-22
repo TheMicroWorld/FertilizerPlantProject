@@ -22,7 +22,7 @@ namespace UserManagementService.services.distributors
             unitOfWork.Dispose();
         }
 
-        public DistributorModel FindDistributorByName()
+        public DistributorModel FindDistributorByName(string distributorName)
         {
             return new DistributorModel();
         }

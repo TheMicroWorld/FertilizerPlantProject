@@ -1,18 +1,11 @@
-﻿using ProductManagementService.services;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UserManagementService.services.distributors;
 using static SerialIO.utils.SerialUtils;
-using SerialIO.utils;
-using FertilizerPlant.viewmodel;
 using System.ComponentModel;
 using FertilizerPlant.viewmodel.command.radiobutton;
 using System.IO.Ports;
 using System.Windows;
-using System.Threading;
+using QrCodeManagementService.utils.binding;
 
 namespace FertilizerPlant.viewmodel.bindingpage
 {
@@ -48,9 +41,13 @@ namespace FertilizerPlant.viewmodel.bindingpage
         private bool startedBinding=false;
 
         private StartMonitoringCommand startMonitoringCommand;
-
+        
         private string selectedProduct;
         private string selectedDistributor;
+
+        private SerialPort comPort;
+
+        #region Start Port Command     
         /// <summary>
         /// first i have to check if the port can be opened or not.
         /// If i can not be opened,I need actually give a message box
@@ -59,13 +56,9 @@ namespace FertilizerPlant.viewmodel.bindingpage
         /// <returns></returns>
         public bool CanStartPort()
         {
-            try
+            if (!QrCodeBindingUtil.CheckIfDeviceOnline(portId))
             {
-                SerialPort port = SerialUtils.Open(portId, 9600);
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("设备不能打开,设备插入啦吗?");
+                MessageBox.Show("设备不能打开,请确保设备运行正常?");
                 return false;
             }
             StartedBinding = true;
@@ -78,8 +71,26 @@ namespace FertilizerPlant.viewmodel.bindingpage
         /// </summary>
         public void StartMonitoringPort()
         {
-
+            QrCodeBindingUtil.StartBindingProductToDistributorOnPort(portId, selectedProduct, selectedDistributor);
         }
+        #endregion
+
+        #region Stop Port Command
+        public bool CanStopPort()
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// WHen this method is executed,that means the port is already opened.
+        /// In this thread,all we need to do is bind the data received event to the port
+        /// </summary>
+        public void StopMonitoringPort()
+        {
+            QrCodeBindingUtil.StopBindingOnPort(portId);
+            StartedBinding = false;
+        }
+        #endregion
         /// <summary>
         /// I should start a read and bind thread
         /// </summary>
@@ -198,30 +209,6 @@ namespace FertilizerPlant.viewmodel.bindingpage
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
-
-        #region Processing Binding Logic
-        private static IList<string> collectedQrCodes = new List<string>();
-
-        private string selectedProduct;
-        private string selectedDistributor;
-        /// <summary>
-        /// this method start the real binding
-        /// </summary>
-      
-        /// <summary>
-        /// data received event handler of the serial port
-        /// </summary>
-        private readonly object lock_object;
-        private void DataReceivedEventHandler(object sender, SerialDataReceivedEventArgs e)
-        {
-            SerialPort sp = (SerialPort)sender;
-            string indata = sp.ReadExisting();
-            lock (lock_object)
-            {
-                collectedQrCodes.Add(indata);
-            }
-        }
         #endregion
     }
 }

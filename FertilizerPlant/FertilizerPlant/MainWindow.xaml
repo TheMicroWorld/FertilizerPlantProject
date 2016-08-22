@@ -28,7 +28,14 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </RadioButton>
-                                <RadioButton  IsChecked="{Binding StartedBinding,Mode=OneWay,Converter={StaticResource StartMonitoringConverter}, ConverterParameter=false,UpdateSourceTrigger=PropertyChanged}">停止监控</RadioButton>
+                                <RadioButton  IsChecked="{Binding StartedBinding,Mode=OneWay,Converter={StaticResource StartMonitoringConverter}, ConverterParameter=false,UpdateSourceTrigger=PropertyChanged}">
+                                    <RadioButton.Content>停止绑定</RadioButton.Content>
+                                    <i:Interaction.Triggers >
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding StartMonitoringCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </RadioButton>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

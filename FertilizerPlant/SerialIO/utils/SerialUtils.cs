@@ -28,5 +28,15 @@ namespace SerialIO.utils
             port.Open();
             return port;
         }
+
+        private void DataReceivedEventHandler(object sender, SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            string indata = sp.ReadExisting();
+            lock (lock_object)
+            {
+                collectedQrCodes.Add(indata);
+            }
+        }
     }
 }

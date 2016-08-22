@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+
 namespace Core.Persistence.Generic.Repositories
 {
     public interface IRepository<TEntity,in TKey> where TEntity : class
@@ -10,6 +13,8 @@ namespace Core.Persistence.Generic.Repositories
 
         void Add(TEntity entity);
         void Remove(TEntity entity);
+
+        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
   
     }
 }
