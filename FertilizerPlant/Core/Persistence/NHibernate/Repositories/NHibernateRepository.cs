@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Core.Persistence.NHibernate.Repositories
 {
@@ -46,5 +47,9 @@ namespace Core.Persistence.NHibernate.Repositories
             session.Delete(entity);
         }
 
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

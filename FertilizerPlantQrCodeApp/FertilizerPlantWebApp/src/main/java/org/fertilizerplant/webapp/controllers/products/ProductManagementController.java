@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.fertilizerplant.productmanagementservice.models.brands.Brand;
+import org.fertilizerplant.productmanagementservice.models.Products.Brand;
 import org.fertilizerplant.productmanagementservice.models.products.Product;
-import org.fertilizerplant.productmanagementservice.services.brands.BrandService;
+import org.fertilizerplant.productmanagementservice.services.Products.Productservice;
 import org.fertilizerplant.productmanagementservice.services.products.ProductService;
 import org.fertilizerplant.webapp.forms.products.ProductForm;
 import org.springframework.stereotype.Controller;
@@ -24,29 +24,26 @@ public class ProductManagementController {
 	
 	public static final String ADD_PRODUCT_PAGE = "pages/product/addproduct";
 	public static final String LIST_PRODUCT_PAGE = "pages/product/listproduct";
-	
-	@Resource
-	BrandService brandService;
-	
+
 	@Resource 
 	ProductService productService;
 	
-	public List<String> getBrands()
+	public List<String> getAvailableProducts()
 	{	
-		List<Brand> availableBrands = brandService.getAllBrands();
+		List<Product> availableProducts = productService.getAllProducts();
 		
-		int size = availableBrands.size();
-		List<String> brands = new ArrayList<>(size);
+		int size = availableProducts.size();
+		List<String> products = new ArrayList<>(size);
 		
 		for(int count=0;count < size;count++)
 		{
-			brands.add(count, availableBrands.get(count).getBrandName());
+			products.add(count, availableProducts.get(count).getName());
 		}
-		if(availableBrands.isEmpty())
+		if(availableProducts.isEmpty())
 		{
-			System.out.println("In "+ProductManagementController.class.getName()+" Brands empty");
+			System.out.println("In "+ProductManagementController.class.getName()+" Products empty");
 		}
-		return brands;
+		return products;
 	}
 	
 	
@@ -55,7 +52,7 @@ public class ProductManagementController {
 	{
 		ProductForm productForm = new ProductForm();
 		model.addAttribute("productForm", productForm);
-		model.addAttribute("brands", getBrands());
+		model.addAttribute("products", getAvailableProducts());
 
 		return ADD_PRODUCT_PAGE;
 	}
@@ -66,7 +63,7 @@ public class ProductManagementController {
 		
 		Product product = new Product();
 		Brand brand = new Brand();
-		String brandName = productForm.getBrand();
+		String brandName = productForm.get
 		brand.setBrandName(brandName);
 		
 		product.setBrand(brand);

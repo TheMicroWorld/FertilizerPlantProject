@@ -88,6 +88,7 @@
     <Compile Include="viewmodel\command\radiobutton\StartMonitoringCommand.cs" />
     <Compile Include="viewmodel\bindingpage\BindingPageRowDataViewModel.cs" />
     <Compile Include="viewmodel\bindingpage\BindingPageViewModel.cs" />
+    <Compile Include="viewmodel\command\radiobutton\StopMonitoringCommand.cs" />
     <Compile Include="viewmodel\converters\StartMonitoringConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

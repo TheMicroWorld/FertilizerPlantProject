@@ -7,7 +7,7 @@
         xmlns:localbindingpage="clr-namespace:FertilizerPlant.viewmodel.bindingpage"
         xmlns:localconverter="clr-namespace:FertilizerPlant.viewmodel.converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="697.8">
+        Title="MainWindow" Height="350" Width="700">
     <Window.Resources>
         <localbindingpage:BindingPageViewModel x:Key="BindingPageViewModel"/>
         <localconverter:StartMonitoringConverter x:Key="StartMonitoringConverter"/>
@@ -20,21 +20,11 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton  IsChecked="{Binding StartedBinding,Mode=OneWay,Converter={StaticResource StartMonitoringConverter}, ConverterParameter=true,UpdateSourceTrigger=PropertyChanged}" >
+                                <RadioButton  IsChecked="{Binding StartedBinding,Mode=TwoWay,Converter={StaticResource StartMonitoringConverter}, ConverterParameter=true,UpdateSourceTrigger=PropertyChanged}" >
                                     <RadioButton.Content>开始绑定</RadioButton.Content>
-                                    <i:Interaction.Triggers >
-                                        <i:EventTrigger EventName="Checked">
-                                            <i:InvokeCommandAction Command="{Binding StartMonitoringCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
                                 </RadioButton>
-                                <RadioButton  IsChecked="{Binding StartedBinding,Mode=OneWay,Converter={StaticResource StartMonitoringConverter}, ConverterParameter=false,UpdateSourceTrigger=PropertyChanged}">
+                                <RadioButton  IsChecked="{Binding StartedBinding,Mode=TwoWay,Converter={StaticResource StartMonitoringConverter}, ConverterParameter=false,UpdateSourceTrigger=PropertyChanged}">
                                     <RadioButton.Content>停止绑定</RadioButton.Content>
-                                    <i:Interaction.Triggers >
-                                        <i:EventTrigger EventName="Checked">
-                                            <i:InvokeCommandAction Command="{Binding StartMonitoringCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
                                 </RadioButton>
                             </StackPanel>
                         </DataTemplate>
@@ -43,7 +33,7 @@
                 <DataGridTemplateColumn Header="产品列表" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding ProductNames}" SelectedIndex="1">
+                            <ComboBox ItemsSource="{Binding ProductNames,Mode=TwoWay}"  SelectedItem="{Binding SelectedProduct,UpdateSourceTrigger=PropertyChanged}">
                             </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -51,14 +41,13 @@
                 <DataGridTemplateColumn Header="经销商列表" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding DistributorNames}" SelectedIndex="1"/>
+                            <ComboBox ItemsSource="{Binding DistributorNames,Mode=TwoWay}" SelectedItem="{Binding SelectedDistributor,UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn IsReadOnly="True" Header="绑定数量">
+                <DataGridTextColumn IsReadOnly="True" Header="绑定数量" Binding="{Binding BindedCount}" Width="*">
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Hello World" Template="{DynamicResource CTGelButton}"/>
     </Grid>
 </Window>

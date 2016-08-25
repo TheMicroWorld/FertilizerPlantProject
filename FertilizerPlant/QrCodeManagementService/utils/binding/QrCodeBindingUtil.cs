@@ -3,6 +3,7 @@ using ProductManagementService.services;
 using ProductManagementService.services.product;
 using QrCodeManagementService.entities.qrcode;
 using QrCodeManagementService.services.qrcode;
+using SerialIO.utils;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -15,12 +16,16 @@ using UserManagementService.services.distributors;
 
 namespace QrCodeManagementService.utils.binding
 {
+    public delegate void IncrementPortBindedCount(int bindedCount);
     public static class QrCodeBindingUtil
     {
+        public static event IncrementPortBindedCount increasedBindingCount;
         private static readonly object lockObject = new object();
         private static IDictionary<string, SerialPort> portDictionary = new Dictionary<string, SerialPort>();
         private static IDictionary<string, List<string>> portToProdDistDict = new Dictionary<string, List<string>>();
         private static IDictionary<string, List<string>> collectedQrCodes = new Dictionary<string, List<string>>();
+        private static IDictionary<string, Thread> threadPool = new Dictionary<string, Thread>();
+        private static IDictionary<string, SerialUtils.DeviceStatus> portsStatus = new Dictionary<string, SerialUtils.DeviceStatus>();
         private static ProductService productService = new DefaultProductService();
         private static DistributorService distributorService = new DefaultDistributorService();
         private static QrCodeService qrCodeService = new DefaultQrCodeService();
@@ -46,6 +51,8 @@ namespace QrCodeManagementService.utils.binding
             portToProdDistDict.Add(portId, new List<string> { productName, distributorName });
             Thread thread = new Thread(() => StartBinding(portId));
             thread.Start();
+            threadPool.Add(portId, null);
+            threadPool[portId] = thread;
         }
 
         /// <summary>
@@ -65,37 +72,62 @@ namespace QrCodeManagementService.utils.binding
                 Console.Write(e.StackTrace);
                 return false;
             }
+
             //I have to add this port to a dictionary to make sure that the background thread can get it
             portDictionary.Add(comPort, port);
-            port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            portsStatus.Add(comPort, SerialUtils.DeviceStatus.MONITORING);
+            collectedQrCodes.Add(comPort, new List<string>());
+            port.DataReceived += DataReceivedHandler;
             return true;
         }
-
+        /// <summary>
+        /// start binding on port 
+        /// </summary>
+        /// <param name="portId"></param>
         private static void StartBinding(string portId)
         {
-            while (true)
+            int bindedCount = 0;
+            while (portsStatus[portId] == SerialUtils.DeviceStatus.MONITORING)
             {
                 lock (lockObject)
                 {
                     List<string> existingQrCodes = collectedQrCodes[portId];
                     int count = existingQrCodes.Count;
-                    if (count == 0)
+                    while (count != 0)
                     {
-                        Monitor.Wait(lockObject);
+                        //fetching the product and distributor from prefilled dictionary,and call binding method
+                        string qrCode = existingQrCodes[count - 1];
+                        existingQrCodes.RemoveAt(count - 1);
+                        string productName = portToProdDistDict[portId][0];
+                        string distributorName = portToProdDistDict[portId][1];
+                        //BindProductToDistributorWithQrCode(qrCode, productName, distributorName);
+                        count = existingQrCodes.Count;
+                        if(increasedBindingCount != null)
+                        {
+                            increasedBindingCount(++bindedCount);
+                        }
                     }
-                    //fetching the product and distributor from prefilled dictionary,and call binding method
-                    string qrCode = existingQrCodes[count - 1];
-                    existingQrCodes.RemoveAt(count - 1);
-                    string productName = portToProdDistDict[portId][0];
-                    string distributorName = portToProdDistDict[portId][1];
-                    BindProductToDistributorWithQrCode(qrCode, productName, distributorName);
+                    Monitor.Wait(lockObject);
                 }
+            }
+            SerialPort port = portDictionary[portId];
+            port.DataReceived -= DataReceivedHandler;
+            try
+            {
+                port.Close();
+            }
+            catch(Exception e)
+            {
             }
         }
 
-        public void StopBindingOnPort(string portId)
+        /// <summary>
+        /// stop binding on port
+        /// </summary>
+        /// <param name="portId"></param>
+        public static void StopBindingOnPort(string portId)
         {
-            return;
+            portsStatus[portId] = SerialUtils.DeviceStatus.STOPPED;
         }
 
         /// <summary>
@@ -113,17 +145,8 @@ namespace QrCodeManagementService.utils.binding
             string indata = sp.ReadExisting();
             lock (lockObject)
             {
-                if (collectedQrCodes.ContainsKey(portName))
-                {
-                    List<string> qrCodesList = collectedQrCodes[portName];
-                    qrCodesList.Add(indata);
-                }
-                else
-                {
-                    List<string> qrCodesList = new List<string>();
-                    qrCodesList.Add(indata);
-                    collectedQrCodes.Add(portName, qrCodesList);
-                }
+                List<string> qrCodesList = collectedQrCodes[portName];
+                qrCodesList.Add(indata);
                 Monitor.PulseAll(lockObject);
             }
         }

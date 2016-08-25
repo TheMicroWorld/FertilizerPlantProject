@@ -56,7 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="utils\SerialIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\SerialUtils.cs" />
   </ItemGroup>

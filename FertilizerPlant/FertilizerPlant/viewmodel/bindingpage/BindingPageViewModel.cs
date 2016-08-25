@@ -91,8 +91,6 @@ namespace FertilizerPlant.viewmodel.bindingpage
                 rowData.DeviceStatus = DeviceStatus.DISCONNECTED;
                 rowData.ProductNames = ProductService.GetAllProductNames();
                 rowData.DistributorNames = DistributorService.GetAllDistributorNames();
-                rowData.StartMonitoringCommand = new command.radiobutton.StartMonitoringCommand(rowData.CanStartPort, rowData.StartMonitoringPort);
-                rowData.BindedCount = 10;
                 bindingPageData.Add(rowData);
             }
             Console.Write("THe number of row data is " + bindingPageData.Count);

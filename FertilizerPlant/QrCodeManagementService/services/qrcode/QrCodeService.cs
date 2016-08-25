@@ -18,5 +18,6 @@ namespace QrCodeManagementService.services.qrcode
 
         QrCodeModel FindById(string qrCodeId);
 
+
     }
 }

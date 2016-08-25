@@ -2,6 +2,7 @@
 using Core.Persistence.Generic.UnitOfWork;
 using Core.Persistence.NHibernate.Repositories;
 using Core.Persistence.NHibernate.UnitOfWork;
+using ProductManagementService.entities.produt;
 using QrCodeManagementService.entities.qrcode;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,5 @@ namespace QrCodeManagementService.services.qrcode
         {
             Add(qrCode);
         }
-
     }
 }

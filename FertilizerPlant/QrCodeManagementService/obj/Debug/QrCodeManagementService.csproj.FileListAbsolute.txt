@@ -4,9 +4,11 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagemen
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\Iesi.Collections.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\NHibernate.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\ProductManagementService.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\SerialIO.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\UserManagementService.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\Core.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\ProductManagementService.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\SerialIO.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\UserManagementService.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\Iesi.Collections.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\QrCodeManagementService\bin\Debug\NHibernate.xml
