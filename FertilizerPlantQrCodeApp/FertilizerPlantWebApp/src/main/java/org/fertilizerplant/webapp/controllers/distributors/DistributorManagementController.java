@@ -22,11 +22,14 @@ public class DistributorManagementController extends UserManagementController{
 	public static final String ADD_DISTRIBUTOR_PAGE = "pages/distributor/adddistributor";
 	public static final String LIST_DISTRIBUTOR_PAGE = "pages/distributor/listdistributor";
 	
+	private static final String ADD_DISTRIBUTOR_LINK = "/add-distributor";
+	private static final String LIST_DISTRIBUTOR_LINK = "/list-distributor";
+	
 	@Autowired
 	private DistributorService distributorService;
 	
 	
-	@RequestMapping("/add-distributor")
+	@RequestMapping(value=ADD_DISTRIBUTOR_LINK,method=RequestMethod.GET)
 	public String generateQrCode(ModelMap model)
 	{
 		DistributorForm distributorForm = new DistributorForm();
@@ -35,7 +38,7 @@ public class DistributorManagementController extends UserManagementController{
 		return ADD_DISTRIBUTOR_PAGE;
 	}
 	
-	@RequestMapping(value = "/add-distributor", method = RequestMethod.POST)
+	@RequestMapping(value = ADD_DISTRIBUTOR_LINK, method = RequestMethod.POST)
 	public String addDistributor(@ModelAttribute("distributorForm") DistributorForm distributorForm, BindingResult result,
 			Model model) {
 
@@ -50,10 +53,10 @@ public class DistributorManagementController extends UserManagementController{
 		// getting all the Distributors
 		List<Distributor> distributors = distributorService.getAllDistributors();
 		model.addAttribute("distributors", distributors);
-		return LIST_DISTRIBUTOR_PAGE;
+		return "redirect:"+LIST_DISTRIBUTOR_PAGE;
 	}
 
-	@RequestMapping(value = "list-distributor", method = RequestMethod.GET)
+	@RequestMapping(value = LIST_DISTRIBUTOR_LINK, method = RequestMethod.GET)
 	public String listDistributor(ModelMap model) {
 		// getting all the Distributors
 		List<Distributor> Distributors = distributorService.getAllDistributors();

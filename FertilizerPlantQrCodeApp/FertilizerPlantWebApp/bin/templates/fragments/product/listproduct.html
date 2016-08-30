@@ -11,16 +11,19 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th th:text="#{product.list.table.product.name}">产品名称</th>
+							<th th:text="#{product.list.table.product.brandName}">品牌名称</th>
+							<th th:text="#{product.list.table.product.productName}">产品名称</th>
+							<th th:text="#{product.list.table.product.specification}">产品规格</th>
 							<th th:text="#{product.list.table.product.unit}">单位</th>
-							<th th:text="#{product.list.table.product.amount}">产品数量</th>
+							
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="product:${products}">
-							<td th:text="${product.name}"></td>
+							<td th:text="${product.brandName}"></td>
+							<td th:text="${product.productName}"></td>
+							<td th:text="${product.productSpecification}"></td>
 							<td th:text="${product.unitName}"></td>
-							<td th:text="${product.amount}"></td>
 						</tr>
 					</tbody>
 				</table>

@@ -21,11 +21,18 @@ import org.fertilizerplant.productmanagementservice.models.stocklevels.StockLeve
 public class Product {
 	
 	/**
-	 * Product name will be the name as brand name
+	 * Product name is the name of the product,this should be unique.One brand
+	 * can have many product names
 	 */
 	@Id
 	@Column(name="productName",nullable=false)
 	private String name;
+	
+	/**
+	 * product brand name
+	 */
+	@Column(name="productBrandName")
+	private String brandName;
 	
 	/**
 	 * Describes the unit name of the product
@@ -33,6 +40,8 @@ public class Product {
 	@Column(name="unitName")
 	private String unitName;
 	
+	@Column(name="specification")
+	private String specification;
 	/**
 	 * this is the stock level of this product
 	 */
@@ -67,4 +76,21 @@ public class Product {
 		this.stockLevels = stockLevels;
 	}
 
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+
+	public String getSpecification() {
+		return specification;
+	}
+
+	public void setSpecification(String specification) {
+		this.specification = specification;
+	}
+	
+	
 }
