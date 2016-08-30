@@ -6,6 +6,6 @@ import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface QrCodeRepository extends JpaRepository<QrCode,Long>,QueryDslPredicateExecutor<QrCode>{
+public interface QrCodeRepository extends JpaRepository<QrCode,Long>,QrCodeBulkSaveRepository<QrCode>,QueryDslPredicateExecutor<QrCode>{
 
 }

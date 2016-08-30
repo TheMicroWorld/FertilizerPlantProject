@@ -1,6 +1,7 @@
 package org.fertilizerplant.productmanagementservice.services.products.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.fertilizerplant.productmanagementservice.models.products.Product;
 import org.fertilizerplant.productmanagementservice.repositories.products.ProductRepository;
@@ -25,6 +26,14 @@ public class DefaultProductService implements ProductService
 	{
 		return productRepository.save(product);
 	}
+	
+	public List<String> getAllProductNames()
+	{
+		List<Product> products = getAllProducts();
+		List<String> productNames = products.stream().map(p->p.getName()).collect(Collectors.toList());
+		return productNames;
+	}
+
 }
 
 

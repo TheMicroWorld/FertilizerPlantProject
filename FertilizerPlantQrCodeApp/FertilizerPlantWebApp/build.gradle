@@ -6,9 +6,11 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-security")
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4")
+	compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
 	compile project(":Common")
 	compile project(":ProductManagementService")
 	compile project(":UserManagementService")
+	compile project(":QrcodeManagementService")
 
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }

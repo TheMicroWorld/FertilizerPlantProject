@@ -48,3 +48,5 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\obj\Debug\FertilizerPlantWindowClient.csproj.GenerateResource.Cache
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\obj\Debug\FertilizerPlant.exe
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\obj\Debug\FertilizerPlant.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Newtonsoft.Json.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Newtonsoft.Json.xml

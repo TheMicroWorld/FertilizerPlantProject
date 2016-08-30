@@ -20,6 +20,9 @@ namespace FertilizerPlant
         {
             //init the application context
             ApplicationContext.ConfigureHibernateMapping();
+
+            //synchornize database
+            ApplicationContext.SynchronizeRemoteToLocalDatabase();
         }
     }
 }

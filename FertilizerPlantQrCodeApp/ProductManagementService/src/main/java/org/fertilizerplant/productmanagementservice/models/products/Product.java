@@ -20,15 +20,11 @@ import org.fertilizerplant.productmanagementservice.models.stocklevels.StockLeve
 @Table(name="Products")
 public class Product {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="productId")
-	private Long id;
-	
 	/**
 	 * Product name will be the name as brand name
 	 */
-	@Column(name="productName",unique=true)
+	@Id
+	@Column(name="productName",nullable=false)
 	private String name;
 	
 	/**
@@ -36,11 +32,6 @@ public class Product {
 	 */
 	@Column(name="unitName")
 	private String unitName;
-	
-	/**
-	 * this is the stock level of this product 
-	 */
-	private int amount;
 	
 	/**
 	 * this is the stock level of this product
@@ -51,14 +42,6 @@ public class Product {
 	        inverseJoinColumns=@JoinColumn(name="stockLevelId")
 	          )
 	private Set<StockLevel> stockLevels = new HashSet<StockLevel>();
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -84,11 +67,4 @@ public class Product {
 		this.stockLevels = stockLevels;
 	}
 
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
 }

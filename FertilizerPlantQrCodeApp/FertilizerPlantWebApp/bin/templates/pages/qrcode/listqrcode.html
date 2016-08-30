@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>化肥厂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8"/>
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+<link th:href="@{/project/css/common.css}" rel="stylesheet"/>
+<script th:src="@{/bootstrap/js/jquery.js}"/>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"/>
+
+</head>
+<body>
+	<div th:replace="fragments/common/header :: header">Header</div>
+	<div th:replace="fragments/qrcode/listqrcode :: list_qrcode">Content</div>
+	<div th:replace="fragments/common/footer :: footer">Footer</div>
+</body>
+</html>

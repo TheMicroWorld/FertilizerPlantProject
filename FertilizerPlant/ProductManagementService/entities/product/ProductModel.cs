@@ -17,6 +17,11 @@ namespace ProductManagementService.entities.produt
         private string unitName;
 
         /// <summary>
+        /// this is the stock level of the product
+        /// </summary>
+        private int amount;
+
+        /// <summary>
         /// one product can have many stock level in different warehouses
         /// </summary>
         private IList<StockLevelModel> stockLevels = new List<StockLevelModel>();
@@ -69,6 +74,19 @@ namespace ProductManagementService.entities.produt
             set
             {
                 stockLevels = value;
+            }
+        }
+
+        public virtual int Amount
+        {
+            get
+            {
+                return amount;
+            }
+
+            set
+            {
+                amount = value;
             }
         }
     }

@@ -8,11 +8,12 @@
 <link th:href="@{/project/css/common.css}" rel="stylesheet"/>
 <script th:src="@{/bootstrap/js/jquery.js}"/>
 <script th:src="@{/bootstrap/js/bootstrap.min.js}"/>
+<script type="text/javascript" th:src="@{/project/js/distributor/adddistributor.js}"/>
 
 </head>
 <body>
-	<div th:include="fragments/common/header :: header">Header</div>
-	<div th:include="fragments/distributor/adddistributor :: add_distributor">Content</div>
+	<div th:replace="fragments/common/header :: header">Header</div>
+	<div th:replace="fragments/distributor/adddistributor :: add_distributor">Content</div>
 	<div th:replace="fragments/common/footer :: footer">Footer</div>
 </body>
 </html>

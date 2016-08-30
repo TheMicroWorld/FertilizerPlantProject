@@ -255,8 +255,10 @@ namespace FertilizerPlant.viewmodel.bindingpage
         public void StartMonitoringPort()
         {
             serialPort.DataReceived += DataReceivedHandler;
-            Thread thread = new Thread(() => StartBinding());
-            thread.Start();
+            //Thread thread = new Thread(() => StartBinding());
+            //thread.Start();
+
+            Task.Run(() => StartBinding());
         }
 
         private SerialPort serialPort;
@@ -291,14 +293,14 @@ namespace FertilizerPlant.viewmodel.bindingpage
                     while (count != 0)
                     {        
                         Console.Write(collectedQrCodes[count - 1]);
-                        bindingService.BindProductWithDistributor(collectedQrCodes[count - 1], selectedProduct, selectedDistributor);
+                        //bindingService.BindProductWithDistributor(collectedQrCodes[count - 1], selectedProduct, selectedDistributor);
                         collectedQrCodes.RemoveAt(count - 1);
                         count = collectedQrCodes.Count;
                         BindedCount = BindedCount + 1;
                     }
                     Monitor.Wait(collectedQrCodes);
                 }
-                Console.WriteLine("out of current task");
+                Console.WriteLine("Thread Id: {0} out of current task",Thread.CurrentThread.ManagedThreadId);
             }
         }
 

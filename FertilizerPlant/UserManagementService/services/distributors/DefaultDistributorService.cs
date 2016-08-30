@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UserManagementService.entities.distributors;
+using UserManagementService.services.users;
 
 namespace UserManagementService.services.distributors
 {
-    public class DefaultDistributorService : DistributorService
+    public class DefaultDistributorService : DefaultUserService,DistributorService
     {
         public void Add(DistributorModel distributor)
         {
@@ -37,6 +38,5 @@ namespace UserManagementService.services.distributors
             unitOfWork.Dispose();
             return distributorNames;
         }
-
     }
 }

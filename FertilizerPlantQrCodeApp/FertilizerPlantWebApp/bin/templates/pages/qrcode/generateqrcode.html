@@ -11,8 +11,8 @@
 
 </head>
 <body>
-	<div th:include="fragments/common/header :: header">Header</div>
-	<div th:include="fragments/qrcode/generateqrcode :: generate_qrcode">Content</div>
+	<div th:replace="fragments/common/header :: header">Header</div>
+	<div th:replace="fragments/qrcode/generateqrcode :: generate_qrcode">Content</div>
 	<div th:replace="fragments/common/footer :: footer">Footer</div>
 </body>
 </html>

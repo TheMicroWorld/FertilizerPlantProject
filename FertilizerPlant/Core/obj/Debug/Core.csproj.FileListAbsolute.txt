@@ -8,4 +8,3 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\System.Data.SQLite.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\obj\Debug\Core.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\obj\Debug\Core.pdb
-E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache

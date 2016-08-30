@@ -1,0 +1,28 @@
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="fragment_list_qrcode" th:fragment="list_qrcode">
+		<div class="container">
+			<label th:text="#{qrcode.list.label}">二维码列表</label>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th th:text="#{qrcode.list.table.qrcode.encodedvalue}">二维码</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="qrcode:${qrcodes}">
+							<td th:text="${qrcode}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<a th:href="@{#{page.header.navigation.links.generate_qrcode}}" class="btn btn-info" role="button">添加二维码</a>
+		</div>
+	</div>
+</body>
+</html>

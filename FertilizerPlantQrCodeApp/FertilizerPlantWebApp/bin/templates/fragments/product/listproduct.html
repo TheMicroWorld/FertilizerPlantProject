@@ -5,7 +5,28 @@
 </head>
 <body>
 	<div class="fragment_list_product" th:fragment="list_product">
-		<
+		<div class="container">
+			<label th:text="#{product.list.label}">产品列表</label>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th th:text="#{product.list.table.product.name}">产品名称</th>
+							<th th:text="#{product.list.table.product.unit}">单位</th>
+							<th th:text="#{product.list.table.product.amount}">产品数量</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="product:${products}">
+							<td th:text="${product.name}"></td>
+							<td th:text="${product.unitName}"></td>
+							<td th:text="${product.amount}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<a th:href="@{#{page.header.navigation.links.add_product}}" class="btn btn-info" role="button">添加新产品</a>
+		</div>
 	</div>
 </body>
 </html>

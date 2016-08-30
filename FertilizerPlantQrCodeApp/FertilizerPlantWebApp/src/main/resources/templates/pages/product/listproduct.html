@@ -11,8 +11,8 @@
 
 </head>
 <body>
-	<div th:include="fragments/common/header :: header">Header</div>
-	<div th:include="fragments/product/listproduct :: list_product">Content</div>
+	<div th:replace="fragments/common/header :: header">Header</div>
+	<div th:replace="fragments/product/listproduct :: list_product">Content</div>
 	<div th:replace="fragments/common/footer :: footer">Footer</div>
 </body>
 </html>

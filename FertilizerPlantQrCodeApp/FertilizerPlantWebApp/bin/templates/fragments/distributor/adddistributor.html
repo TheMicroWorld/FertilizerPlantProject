@@ -7,13 +7,33 @@
 	<div class="fragment_add_distributor" th:fragment="add_distributor">
 		<form role="form"
 			th:action="@{#{page.header.navigation.links.add_distributor}}"
-			 method="post">
+			th:object="${distributorForm}" method="post">
 			<div class="form-group">
-				<label for="add_distributor_name" th:text="#{distributor.add.name.label.name}">经销商姓名</label>
-				<input
-					type="text" class="form-control" id="add_distributor_name" />
+				<label for="distributorName" th:text="#{distributor.name}">产品名称</label>
+				 <select
+					th:field="*{name}" class="form-control" id="add_distributor_select">
+					<option th:each="distributorName:${distributorNames}" th:value="${distributorName}" th:text="${distributorName}"></option>
+					<option disabled="true" value="placeholder_option"> -- select an option -- </option>
+					<option value="select_add">点击添加</option>
+				</select>
 			</div>
 			
+			<!-- Modal pop up when add_select is selected -->
+			<div id="adddistributorModal" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-sm">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">经销商姓名</h4>
+						</div>
+						<div class="modal-body">
+							<input id="add_distributor_name_modal_input" type="text"></input>
+							<button type="button" class="btn btn-default add_distributor_name_model_close_btn"
+								data-dismiss="modal">保存</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="form-group">
 				<label for="add_distributor_address" th:text="#{distributor.add.address.label.name}">经销商地址</label>
 				<input
@@ -21,11 +41,11 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="add_distributor_address" th:text="#{distributor.add.address.label.name}">增加的</label>
+				<label for="add_distributor_phone" th:text="#{distributor.add.phone.label.name}"></label>
 				<input
 					type="text" class="form-control" id="add_distributor_address" />
 			</div>
-			<button type="submit" class="btn btn-default" th:text="#{distributor.add.save.button.name}">生成二维码</button>
+			<button type="submit" class="btn btn-default" th:text="#{distributor.add.save.button.name}"></button>
 		</form>
 	</div>
 </body>

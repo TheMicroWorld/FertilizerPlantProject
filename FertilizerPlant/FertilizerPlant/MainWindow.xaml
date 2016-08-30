@@ -7,7 +7,7 @@
         xmlns:localbindingpage="clr-namespace:FertilizerPlant.viewmodel.bindingpage"
         xmlns:localconverter="clr-namespace:FertilizerPlant.viewmodel.converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="700">
+        Title="MainWindow" Height="350" Width="780.8">
     <Window.Resources>
         <localbindingpage:BindingPageViewModel x:Key="BindingPageViewModel"/>
         <localconverter:StartMonitoringConverter x:Key="StartMonitoringConverter"/>

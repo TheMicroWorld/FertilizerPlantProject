@@ -1,0 +1,32 @@
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="fragment_list_distributor" th:fragment="list_distributor">
+		<div class="container">
+			<label th:text="#{distributor.list.label}">产品列表</label>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th th:text="#{distributor.list.table.distributor.name}">姓名</th>
+							<th th:text="#{distributor.list.table.distributor.address}">地址</th>
+							<th th:text="#{distributor.list.table.distributor.phoneNumber}">电话号码</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="distributor:${distributors}">
+							<td th:text="${distributor.name}"></td>
+							<td th:text="${distributor.address}"></td>
+							<td th:text="${distributor.phoneNumber}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<a th:href="@{#{page.header.navigation.links.add_distributor}}" class="btn btn-info" role="button">添加新产品</a>
+		</div>
+	</div>
+</body>
+</html>

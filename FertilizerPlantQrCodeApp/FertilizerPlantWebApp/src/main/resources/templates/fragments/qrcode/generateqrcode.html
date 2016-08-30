@@ -7,11 +7,11 @@
 	<div class="fragment_generate_qrcode" th:fragment="generate_qrcode">
 		<form role="form"
 			th:action="@{#{page.header.navigation.links.generate_qrcode}}"
-			method="post">
+			th:object="${qrcodeForm}" method="post">
 			<div class="form-group">
-				<label for="brand" th:text="#{qrcode.generate.quantity.label.name}">二维码数量</label>
+				<label for="generate_qrcode_quantity" th:text="#{qrcode.generate.quantity.label.name}">二维码数量</label>
 				<input type="text" class="form-control"
-					id="generate_qrcode_quantity" />
+					id="generate_qrcode_quantity" th:field="*{count}"/>
 			</div>
 			<button type="submit" class="btn btn-default"
 				th:text="#{qrcode.generate.save.button.name}">生成二维码</button>

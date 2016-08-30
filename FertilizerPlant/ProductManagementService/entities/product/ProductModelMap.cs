@@ -21,6 +21,7 @@ namespace ProductManagementService.entities.product
             });
             Property(c=>c.ProductName);
             Property(c => c.UnitName);
+            Property(c => c.Amount);
             Bag(c => c.StockLevels, map =>
             {
                 map.Table("ProductStockLevels");
