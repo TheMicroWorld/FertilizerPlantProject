@@ -8,7 +8,6 @@ namespace QrCodeManagementService.services.binding
 {
     public interface BindingService
     {
-        void BindProductWithDistributor(string qrCode, string productName, string distributorName);
-
+        void BindProductWithDistributor(string qrCodeId, string productNameId, string distributorId);
     }
 }

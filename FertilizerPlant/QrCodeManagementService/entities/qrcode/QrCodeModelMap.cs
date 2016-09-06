@@ -1,5 +1,6 @@
 ﻿using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
+using NHibernate.Type;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace QrCodeManagementService.entities.qrcode
                 map.Generator(Generators.Assigned);
                 map.Column("QrCodeId");
             });
+            Property(c => c.SyncStatus, map => map.Type<YesNoType>());
             ManyToOne(c => c.Product, map =>
             {
                 map.Column("ProductId");

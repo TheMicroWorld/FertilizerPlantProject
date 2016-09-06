@@ -13,13 +13,32 @@ namespace UserManagementService.services.users
 {
     public class DefaultUserService : UserService
     {
-        public void Add(UserModel user)
+        private IRepository<UserModel, int> userRepository;
+        private NHibernateUnitOfWork unitOfWork;
+
+        private void StartNewUnitOfWork()
         {
-            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
-            IRepository<UserModel, int> userRepository = new NHibernateRepository<UserModel, int>(unitOfWork);
-            userRepository.Add(user);
+            unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
+            userRepository = new NHibernateRepository<UserModel, int>(unitOfWork);
+        }
+        private void EndUnitOfWork()
+        {
             unitOfWork.SaveChanges();
             unitOfWork.Dispose();
+        }
+
+        public void Add(UserModel user)
+        {
+            StartNewUnitOfWork();
+            userRepository.Add(user);
+            EndUnitOfWork();
+        }
+
+        public void BulkSave(IList<UserModel> users)
+        {
+            StartNewUnitOfWork();
+            userRepository.BulkSave(users);
+            EndUnitOfWork();
         }
     }
 }

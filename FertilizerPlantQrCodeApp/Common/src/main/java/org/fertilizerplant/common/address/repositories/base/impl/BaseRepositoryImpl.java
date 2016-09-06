@@ -39,7 +39,7 @@ public class BaseRepositoryImpl<T> implements BaseRepository<T>{
 		{
 		  if (entity != null)
 		  {
-		    entityManager.persist(entity);
+		    entityManager.merge(entity);
 		    return entity;
 		  }
 		  else

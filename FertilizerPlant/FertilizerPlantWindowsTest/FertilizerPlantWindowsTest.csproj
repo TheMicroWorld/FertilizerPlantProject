@@ -89,14 +89,20 @@
   <ItemGroup>
     <Compile Include="products\FertilizerPlantTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="qrcode\binding\BindingServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{95a241f8-deb4-4f80-adc6-f03cca2c3400}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FertilizerPlant\FertilizerPlantWindowClient.csproj">
+      <Project>{819E0402-86EA-4C7B-ACA0-ECC2BBF0BE65}</Project>
+      <Name>FertilizerPlantWindowClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProductManagementService\ProductManagementService.csproj">
       <Project>{fda64aa8-62c8-40d1-9186-e4a64f67ce98}</Project>

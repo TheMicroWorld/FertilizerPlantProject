@@ -14,14 +14,14 @@ namespace ProductManagementService.entities.product
         public ProductModelMap()
         {
             Table("Products");
-            Id(c => c.Id, map =>
+            Id(c => c.ProductName, map =>
             {
-                map.Generator(Generators.Identity);
+                map.Generator(Generators.Assigned);
                 map.Column("ProductId");
             });
-            Property(c=>c.ProductName);
+            Property(c=>c.BrandName);
+            Property(c => c.Specification);
             Property(c => c.UnitName);
-            Property(c => c.Amount);
             Bag(c => c.StockLevels, map =>
             {
                 map.Table("ProductStockLevels");

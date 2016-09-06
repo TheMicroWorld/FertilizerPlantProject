@@ -14,29 +14,49 @@ namespace UserManagementService.services.distributors
 {
     public class DefaultDistributorService : DefaultUserService,DistributorService
     {
-        public void Add(DistributorModel distributor)
+        private IRepository<DistributorModel, string> distributorRepository;
+        private NHibernateUnitOfWork unitOfWork;
+
+        private void StartNewUnitOfWork()
         {
-            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
-            IRepository<DistributorModel, int> distributorRepository = new NHibernateRepository<DistributorModel, int>(unitOfWork);
-            distributorRepository.Add(distributor);
+            unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
+            distributorRepository = new NHibernateRepository<DistributorModel, string>(unitOfWork);
+        }
+        private void EndUnitOfWork()
+        {
             unitOfWork.SaveChanges();
             unitOfWork.Dispose();
         }
 
-        public DistributorModel FindDistributorByName(string distributorName)
+        public void Add(DistributorModel distributor)
         {
-            return new DistributorModel();
+            StartNewUnitOfWork();
+            distributorRepository.Add(distributor);
+            EndUnitOfWork();
         }
 
         public IList<string> GetAllDistributorNames()
         {
-            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
-            IRepository<DistributorModel, int> distributorRepository = new NHibernateRepository<DistributorModel, int>(unitOfWork);
-            IList<DistributorModel> distributors = (List<DistributorModel>)distributorRepository.GetAll();
+            StartNewUnitOfWork();
+            IList<DistributorModel> distributors = distributorRepository.GetAll().ToList();
             IList<string> distributorNames = distributors.Select(d => d.Name).ToList();
-            unitOfWork.SaveChanges();
-            unitOfWork.Dispose();
+            EndUnitOfWork();
             return distributorNames;
+        }
+
+        public void BulkSave(IList<DistributorModel> distributors)
+        {
+            StartNewUnitOfWork();
+            distributorRepository.BulkSave(distributors);
+            EndUnitOfWork();
+        }
+
+        public DistributorModel FindById(string id)
+        {
+            StartNewUnitOfWork();
+            DistributorModel qrCodeModel = distributorRepository.Get(id);
+            EndUnitOfWork();
+            return qrCodeModel;
         }
     }
 }

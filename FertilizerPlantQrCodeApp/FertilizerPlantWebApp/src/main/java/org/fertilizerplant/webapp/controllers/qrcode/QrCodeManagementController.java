@@ -22,13 +22,18 @@ public class QrCodeManagementController {
 	
 	public static final String GENERATE_QRCODE_PAGE = "pages/qrcode/generateqrcode";
 	public static final String LIST_QRCODE_PAGE = "pages/qrcode/listqrcode";
+	
 	public static final String SCANNED_QRCODE_PAGE = "pages/qrcode/scannedqrcodepage";
 	public static final String SCANNED_URL_REQUEST_MAPPING_PATH = "/qrcode-manage"; 
+	
+	private static final String ADD_QRCODE_LINK = "/generate-qrcode";
+	private static final String LIST_QRCODE_LINK = "/list-qrcode";
+	private static final String REDIRECT_LIST_PRODUCT_LINK = "redirect:/qrcode-manage/list-qrcode";
 	
 	@Autowired
 	private QrCodeService qrcodeService;
 	
-	@RequestMapping(value="/generate-qrcode",method=RequestMethod.GET)
+	@RequestMapping(value=ADD_QRCODE_LINK,method=RequestMethod.GET)
 	public String generateQrCode(ModelMap model)
 	{
 		QrCodeForm qrcodeForm = new QrCodeForm();
@@ -37,7 +42,7 @@ public class QrCodeManagementController {
 		return GENERATE_QRCODE_PAGE;
 	}
 	
-	@RequestMapping(value = "/generate-qrcode", method = RequestMethod.POST)
+	@RequestMapping(value = ADD_QRCODE_LINK, method = RequestMethod.POST)
 	public String addProduct(@ModelAttribute("qrCodeForm") QrCodeForm qrCodeForm, BindingResult result,Model model,HttpServletRequest request)
 	{
 		QrCode qrcode = new QrCode();
@@ -45,13 +50,12 @@ public class QrCodeManagementController {
 				,request.getContextPath()) + SCANNED_URL_REQUEST_MAPPING_PATH;
 		
 		qrcodeService.generateQrCodes(qrCodeForm.getCount(),encodedWebRootPrefix);
-		List<String> qrcodes = qrcodeService.getAllQrCodeValues();
-		model.addAttribute("qrcodes", qrcodes);
-		return LIST_QRCODE_PAGE;
+		
+		return REDIRECT_LIST_PRODUCT_LINK;
 	}
 
 	
-	@RequestMapping(value="/list-qrcode",method=RequestMethod.GET)
+	@RequestMapping(value=LIST_QRCODE_LINK,method=RequestMethod.GET)
 	public String listQrCode(ModelMap model)
 	{
 		// getting all the qrcodes

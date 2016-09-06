@@ -24,6 +24,8 @@ public class ProductManagementController {
 
 	private static final String ADD_PRODUCT_LINK = "/add-product";
 	private static final String LIST_PRODUCT_LINK = "/list-product";
+	private static final String REDIRECT_LIST_PRODUCT_LINK = "/product-manage/list-product";
+
 	
 	@Resource
 	ProductService productService;
@@ -43,7 +45,7 @@ public class ProductManagementController {
 			Model model) {
 
 		Product product = new Product();
-		product.setName(productForm.getProductName());
+		product.setProductName(productForm.getProductName());
 
 		product.setUnitName(productForm.getUnitName());
 		product.setBrandName(productForm.getBrandName());
@@ -51,10 +53,7 @@ public class ProductManagementController {
 		
 		productService.save(product);
 
-		// getting all the products
-		List<Product> products = productService.getAllProducts();
-		model.addAttribute("products", products);
-		return "redirect:" + LIST_PRODUCT_LINK;
+		return "redirect:" + REDIRECT_LIST_PRODUCT_LINK;
 	}
 
 	@RequestMapping(value = LIST_PRODUCT_LINK, method = RequestMethod.GET)

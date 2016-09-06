@@ -1,5 +1,6 @@
 ﻿using Core.Persistence.Generic.UnitOfWork;
 using Core.Persistence.NHibernate.UnitOfWork.Factories;
+using FertilizerPlant.global.context;
 using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Tool.hbm2ddl;
@@ -30,6 +31,7 @@ namespace FertilizerPlantWindowsTest.products
         private StockLevelService stockLevelService;
         private WarehouseService warehouseService;
         private DistributorService distributorService;
+        private ApplicationContext applicationContext;
         
         [SetUp]
         public void SetUp()
@@ -38,7 +40,8 @@ namespace FertilizerPlantWindowsTest.products
             stockLevelService = new DefaultStockLevelService();
             warehouseService = new DefaultWarehouseService();
             distributorService = new DefaultDistributorService();
-            ConfigureHibernateMapping();
+            applicationContext = new ApplicationContext();
+            applicationContext.Init();
         }
         [Test]
         public void CreateDatabaseSchemaTest()
@@ -71,18 +74,6 @@ namespace FertilizerPlantWindowsTest.products
 
            IList<string> distributorNames = distributorService.GetAllDistributorNames();
            Console.WriteLine(distributorNames);
-        }
-        private void ConfigureHibernateMapping()
-        {
-            Configuration hibernateConfig = (UnitOfWork.UnitOfWorkFactory as NHibernateUnitOfWorkFactory).Configuration;
-            var mapper = new ModelMapper();
-            mapper.AddMappings(typeof(ProductModelMap).Assembly.GetExportedTypes());
-            mapper.AddMappings(typeof(DistributorModelMap).Assembly.GetExportedTypes());
-            mapper.AddMappings(typeof(QrCodeModel).Assembly.GetExportedTypes());
-
-            hibernateConfig.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), "FertilizerPlantScheme");
-            SchemaExport schema = new SchemaExport(hibernateConfig);
-            schema.Create(false, true);
         }
     }
 }

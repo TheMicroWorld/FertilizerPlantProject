@@ -33,8 +33,8 @@ namespace QrCodeManagementService.utils.binding
         public static void BindProductToDistributorWithQrCode(string qrCode, string productName, string distributorName)
         {
             QrCodeModel qrCodeModel = qrCodeService.FindById(qrCode);
-            ProductModel product = productService.FindByProductName(productName);
-            DistributorModel distributor = distributorService.FindDistributorByName(distributorName);
+            ProductModel product = productService.FindById(productName);
+            DistributorModel distributor = distributorService.FindById(distributorName);
             qrCodeModel.Distributor = distributor;
             qrCodeModel.Product = product;
             qrCodeService.Update(qrCodeModel);

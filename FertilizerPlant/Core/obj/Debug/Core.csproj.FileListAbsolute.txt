@@ -8,3 +8,8 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\System.Data.SQLite.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\obj\Debug\Core.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\obj\Debug\Core.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\log4net.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\log4net.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\Core.dll.config
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\NHibernate.Linq.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\Core\bin\Debug\NHibernate.Linq.xml

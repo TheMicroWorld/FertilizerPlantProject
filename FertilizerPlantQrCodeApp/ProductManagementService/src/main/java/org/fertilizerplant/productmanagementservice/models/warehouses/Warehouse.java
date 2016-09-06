@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Warehouse {
 	/**
 	 * stock levels of this warehouse
 	 */
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinTable(name="Warehouse_StockLevels",
 			joinColumns = @JoinColumn(name="warehouseId"),
 	        inverseJoinColumns=@JoinColumn(name="stockLevelId")

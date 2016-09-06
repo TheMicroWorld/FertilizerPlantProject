@@ -7,12 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.fertilizerplant.common.base.models.BaseEntity;
 import org.fertilizerplant.productmanagementservice.models.products.Product;
 import org.fertilizerplant.usermangementservice.models.distributors.Distributor;
 
 @Entity
 @Table(name="QrcodeSequenceNumber")
-public class QrCode {
+public class QrCode extends BaseEntity{
 	
 	@Id
 	@Column(name="encodedValue",nullable = false)

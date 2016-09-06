@@ -13,44 +13,55 @@ namespace ProductManagementService.services.product
 {
     public class DefaultProductService : ProductService
     {
-        public void Add(ProductModel product)
+        private IRepository<ProductModel,string> productRepository;
+        private NHibernateUnitOfWork unitOfWork;
+
+        private void StartNewUnitOfWork()
         {
-            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
-            IRepository<ProductModel, int> productRepository = new NHibernateRepository<ProductModel, int>(unitOfWork);
-            productRepository.Add(product);
+            unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
+            productRepository = new NHibernateRepository<ProductModel, string>(unitOfWork);
+        }
+        private void EndUnitOfWork()
+        {
             unitOfWork.SaveChanges();
             unitOfWork.Dispose();
         }
-
-        /// <summary>
-        /// This function will try to find the product by name.Actually i should set the product name as the primary key
-        /// </summary>
-        /// <param name="productName"></param>
-        /// <returns></returns>
-        public ProductModel FindByProductName(string productName)
+        public void Add(ProductModel product)
         {
-            return new entities.produt.ProductModel();
+            StartNewUnitOfWork();
+            productRepository.Add(product);
+            EndUnitOfWork();
         }
 
         public IList<ProductModel> GetAll()
         {
-            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
-            IRepository<ProductModel, int> productRepository = new NHibernateRepository<ProductModel, int>(unitOfWork);
+            StartNewUnitOfWork();
             IList<ProductModel> products = (List<ProductModel>)productRepository.GetAll();
-            unitOfWork.SaveChanges();//do the commit
-            unitOfWork.Dispose();//dispose unitOfWork
+            EndUnitOfWork();
             return products;
         }
 
         public IList<string> GetAllProductNames()
         {
-            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
-            IRepository<ProductModel, int> productRepository = new NHibernateRepository<ProductModel, int>(unitOfWork);
-            IList<ProductModel> products = (List<ProductModel>)productRepository.GetAll();
+            StartNewUnitOfWork();
+            IList<ProductModel> products = productRepository.GetAll().ToList();
             IList<string> productNames = products.Select(p => p.ProductName).ToList();
-            unitOfWork.SaveChanges();
-            unitOfWork.Dispose();
+            EndUnitOfWork();
             return productNames;
+        }
+        public void BulkSave(IList<ProductModel> products)
+        {
+            StartNewUnitOfWork();
+            productRepository.BulkSave(products);
+            EndUnitOfWork();
+        }
+
+        public ProductModel FindById(string id)
+        {
+            StartNewUnitOfWork();
+            ProductModel productModel = productRepository.Get(id);
+            EndUnitOfWork();
+            return productModel;
         }
     }
 }

@@ -14,28 +14,55 @@ namespace QrCodeManagementService.services.qrcode
 {
     public class DefaultQrCodeService : QrCodeService
     {
-        public void Add(QrCodeModel qrCode)
+        private IRepository<QrCodeModel, string> qrCodeRepository;
+        private NHibernateUnitOfWork unitOfWork;
+
+        private void StartNewUnitOfWork()
         {
-            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
-            IRepository<QrCodeModel, string> qrCodeRepository = new NHibernateRepository<QrCodeModel, string>(unitOfWork);
-            qrCodeRepository.Add(qrCode);
+            unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
+            qrCodeRepository = new NHibernateRepository<QrCodeModel, string>(unitOfWork);
+        }
+        private void EndUnitOfWork()
+        {
             unitOfWork.SaveChanges();
             unitOfWork.Dispose();
         }
-
+        public void Add(QrCodeModel qrCode)
+        {
+            StartNewUnitOfWork();
+            qrCodeRepository.Add(qrCode);
+            EndUnitOfWork();
+        }
         public QrCodeModel FindById(string qrCodeId)
         {
-            NHibernateUnitOfWork unitOfWork = (NHibernateUnitOfWork)UnitOfWork.Start();
-            IRepository<QrCodeModel, string> qrCodeRepository = new NHibernateRepository<QrCodeModel, string>(unitOfWork);
+            StartNewUnitOfWork();
             QrCodeModel qrCodeModel = qrCodeRepository.Get(qrCodeId);
-            unitOfWork.SaveChanges();
-            unitOfWork.Dispose();
+            EndUnitOfWork();
             return qrCodeModel;
         }
 
         public void Update(QrCodeModel qrCode)
         {
-            Add(qrCode);
+            StartNewUnitOfWork();
+            qrCodeRepository.Add(qrCode);
+            EndUnitOfWork();
+        }
+
+
+        public void BulkSave(IList<QrCodeModel> qrcodes)
+        {
+            StartNewUnitOfWork();
+            qrCodeRepository.BulkSave(qrcodes);
+            EndUnitOfWork();
+        }
+
+        public List<QrCodeModel> FindAllUnsynchedBindedQrCodes()
+        {
+            List<QrCodeModel> qrcodes = null;
+            StartNewUnitOfWork();
+            qrcodes = qrCodeRepository.FilterBy(code => code.SyncStatus == false && code.Distributor != null && code.Product != null).ToList();
+            EndUnitOfWork();
+            return qrcodes;
         }
     }
 }

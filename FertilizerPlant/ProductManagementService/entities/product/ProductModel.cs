@@ -9,34 +9,25 @@ namespace ProductManagementService.entities.produt
 {
     public class ProductModel
     {
-        private int id;
+        /// <summary>
+        /// product brand.One brand can have many products
+        /// </summary>
+        private string brandName;
         /// <summary>
         /// product name
         /// </summary>
         private string productName;
+        /// <summary>
+        /// product specification
+        /// </summary>
+        private string specification;
         private string unitName;
 
-        /// <summary>
-        /// this is the stock level of the product
-        /// </summary>
-        private int amount;
 
         /// <summary>
         /// one product can have many stock level in different warehouses
         /// </summary>
         private IList<StockLevelModel> stockLevels = new List<StockLevelModel>();
-        public virtual int Id
-        {
-            get
-            {
-                return id;
-            }
-
-            set
-            {
-                id = value;
-            }
-        }
 
         public virtual string ProductName
         {
@@ -77,16 +68,29 @@ namespace ProductManagementService.entities.produt
             }
         }
 
-        public virtual int Amount
+        public virtual string BrandName
         {
             get
             {
-                return amount;
+                return brandName;
             }
 
             set
             {
-                amount = value;
+                brandName = value;
+            }
+        }
+
+        public virtual string Specification
+        {
+            get
+            {
+                return specification;
+            }
+
+            set
+            {
+                specification = value;
             }
         }
     }

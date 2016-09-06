@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using System.Collections.ObjectModel;
+using System.Configuration;
+using NHibernate.Criterion;
 
 namespace Core.Persistence.NHibernate.Repositories
 {
     public class NHibernateRepository<TEntity,TKey> : IRepository<TEntity,TKey> where TEntity : class
     {
+        private int batchSize = Convert.ToInt32(ConfigurationManager.AppSettings["hibernate_batch_size"]);
         private readonly ISession session;
         private readonly NHibernateUnitOfWork unitOfWork;
 
@@ -32,14 +36,14 @@ namespace Core.Persistence.NHibernate.Repositories
         {
             return session.Get<TEntity>(id);
         }
-        public IEnumerable<TEntity> GetAll()
+        public IList<TEntity> GetAll()
         {
-            return session.CreateQuery("from " + typeof(TEntity)).List<TEntity>();
+            return session.QueryOver<TEntity>().List();
         }
 
         public void Add(TEntity entity)
         {
-            session.SaveOrUpdate(entity);
+            session.Merge(entity);
         }
 
         public  void Remove(TEntity entity)
@@ -47,9 +51,31 @@ namespace Core.Persistence.NHibernate.Repositories
             session.Delete(entity);
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        public IList<TEntity> BulkSave(IList<TEntity> entities)
         {
-            throw new NotImplementedException();
+            List<TEntity> savedEntities = new List<TEntity>(entities.Count);
+            int i = 0;
+            foreach(TEntity t in entities)
+            {
+                savedEntities.Add(session.Merge(t));
+                i++;
+                if(i % batchSize == 0)
+                {
+                    session.Flush();
+                    session.Clear();
+                }
+            }
+            return savedEntities;
+        }
+
+        public TEntity FindBy(Expression<Func<TEntity, bool>> expression)
+        {
+            return FilterBy(expression).FirstOrDefault();
+        }
+
+        public IList<TEntity> FilterBy(Expression<Func<TEntity, bool>> expression)
+        {
+            return session.QueryOver<TEntity>().Where(expression).List();
         }
     }
 }

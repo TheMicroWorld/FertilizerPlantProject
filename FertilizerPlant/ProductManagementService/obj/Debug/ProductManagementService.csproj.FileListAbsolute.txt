@@ -18,3 +18,4 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\ProductManageme
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\ProductManagementService\obj\Debug\ProductManagementService.csprojResolveAssemblyReference.cache
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\ProductManagementService\obj\Debug\ProductManagementService.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\ProductManagementService\obj\Debug\ProductManagementService.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\ProductManagementService\bin\Debug\ProductManagementService.dll.config

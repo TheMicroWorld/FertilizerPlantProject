@@ -11,13 +11,12 @@ namespace Core.utils.httpclient
 {
     public static class HttpConetentExtension
     {
-        public static async Task<string> ReadAsJsonAsync(HttpContent content, Encoding encoding)
+        public static string ReadAsJsonSync(HttpContent content, Encoding encoding)
         {
-            Byte[] byteArray = await content.ReadAsByteArrayAsync();
+            Byte[] byteArray = content.ReadAsByteArrayAsync().Result;
             string jsonResponse = Encoding.UTF8.GetString(byteArray, 0, byteArray.Length);
             Console.WriteLine(jsonResponse);
-            return jsonResponse;
-            
+            return jsonResponse;   
         }
     }
 }

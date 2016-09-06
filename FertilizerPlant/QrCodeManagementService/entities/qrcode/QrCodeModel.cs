@@ -23,6 +23,8 @@ namespace QrCodeManagementService.entities.qrcode
         /// </summary>
         private DistributorModel distributor;
 
+        private bool syncStatus = false;
+
         public virtual string EncodedValue
         {
             get
@@ -59,6 +61,19 @@ namespace QrCodeManagementService.entities.qrcode
             set
             {
                 distributor = value;
+            }
+        }
+
+        public virtual bool SyncStatus
+        {
+            get
+            {
+                return syncStatus;
+            }
+
+            set
+            {
+                syncStatus = value;
             }
         }
     }

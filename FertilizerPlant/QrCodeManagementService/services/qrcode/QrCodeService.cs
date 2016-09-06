@@ -17,7 +17,8 @@ namespace QrCodeManagementService.services.qrcode
         void Update(QrCodeModel qrCode);
 
         QrCodeModel FindById(string qrCodeId);
+        void BulkSave(IList<QrCodeModel> qrcodes);
 
-
+        List<QrCodeModel> FindAllUnsynchedBindedQrCodes();
     }
 }

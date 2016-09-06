@@ -16,13 +16,11 @@ namespace FertilizerPlant
     /// </summary>
     public partial class App : Application
     {
+        ApplicationContext context;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //init the application context
-            ApplicationContext.ConfigureHibernateMapping();
-
-            //synchornize database
-            ApplicationContext.SynchronizeRemoteToLocalDatabase();
+            context = new ApplicationContext();
+            context.Init();
         }
     }
 }

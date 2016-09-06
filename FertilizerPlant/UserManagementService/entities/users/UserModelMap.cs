@@ -13,14 +13,13 @@ namespace UserManagementService.users
         public UserModelMap()
         {
             Table("Users");
-            Id(c => c.Id, map =>
+            Id(c => c.Name, map =>
             {
-                map.Generator(Generators.Identity);
+                map.Generator(Generators.Assigned);
                 map.Column("UserId");
             });
             Property(c => c.Address);
             Property(c => c.CellPhone);
-            Property(c => c.Name);
             Discriminator(c =>
             {
                 c.Column("Discriminator");

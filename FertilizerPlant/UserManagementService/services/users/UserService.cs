@@ -10,5 +10,6 @@ namespace UserManagementService.services.users
     public interface UserService
     {
         void Add(UserModel user);
+        void BulkSave(IList<UserModel> users);
     }
 }

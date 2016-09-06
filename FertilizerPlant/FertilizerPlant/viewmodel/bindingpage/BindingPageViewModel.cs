@@ -18,6 +18,7 @@ using ProductManagementService.entities.warehouse;
 using Remotion.Linq.Collections;
 using System.IO.Ports;
 using System.Threading;
+using System.Configuration;
 
 namespace FertilizerPlant.viewmodel.bindingpage
 {
@@ -49,7 +50,7 @@ namespace FertilizerPlant.viewmodel.bindingpage
         {
             get
             {
-                GenerateProductAndDistributorSampleData();
+                //GenerateProductAndDistributorSampleData();
                 RetriveBindingPageRowData();
                 return bindingPageData;
             }
@@ -83,8 +84,8 @@ namespace FertilizerPlant.viewmodel.bindingpage
 
         private void RetriveBindingPageRowData()
         {
-            IList<string> ports = ApplicationContext.GetConfiguredComPorts();
-            foreach(string port in ports)
+            IList<string> ports = ConfigurationManager.AppSettings["PORTS"].Split(',').ToList<string>();
+            foreach (string port in ports)
             {
                 BindingPageRowDataViewModel rowData = new BindingPageRowDataViewModel();
                 rowData.PortId = port;
@@ -93,45 +94,6 @@ namespace FertilizerPlant.viewmodel.bindingpage
                 rowData.DistributorNames = DistributorService.GetAllDistributorNames();
                 bindingPageData.Add(rowData);
             }
-            Console.Write("THe number of row data is " + bindingPageData.Count);
-        }
-
-        private void GenerateProductAndDistributorSampleData()
-        {
-            StockLevelService stockLevelService = new DefaultStockLevelService();
-            WarehouseService warehouseService = new DefaultWarehouseService();
-            ProductModel product = new ProductModel();
-            product.ProductName = "可口可乐";
-
-            ProductModel product1 = new ProductModel();
-            product1.ProductName = "黄老吉";
-
-            ProductModel product2 = new ProductModel();
-            product2.ProductName = "涨价玩";
-
-            ProductModel product3 = new ProductModel();
-            product3.ProductName = "直至牛肉";
-
-            productService.Add(product);
-            productService.Add(product1);
-            productService.Add(product2);
-            productService.Add(product3);
-
-            IList<string> productNames = productService.GetAllProductNames();
-            Console.WriteLine(productNames);
-
-            DistributorModel distributor = new DistributorModel();
-            distributor.Name = "黄凯";
-            DistributorModel distributor1 = new DistributorModel();
-
-            distributor1.Name = "德阳";
-            DistributorModel distributor2 = new DistributorModel();
-
-            distributor2.Name = "黄芪";
-
-            distributorService.Add(distributor);
-            distributorService.Add(distributor1);
-            distributorService.Add(distributor2);
         }
     }
 }

@@ -24,6 +24,7 @@ public class DistributorManagementController extends UserManagementController{
 	
 	private static final String ADD_DISTRIBUTOR_LINK = "/add-distributor";
 	private static final String LIST_DISTRIBUTOR_LINK = "/list-distributor";
+	private static final String REDIRECT_LIST_DISTRIBUTOR_LINK = "/distributor-manage/list-distributor";
 	
 	@Autowired
 	private DistributorService distributorService;
@@ -50,10 +51,7 @@ public class DistributorManagementController extends UserManagementController{
 
 		distributorService.save(distributor);
 
-		// getting all the Distributors
-		List<Distributor> distributors = distributorService.getAllDistributors();
-		model.addAttribute("distributors", distributors);
-		return "redirect:"+LIST_DISTRIBUTOR_PAGE;
+		return "redirect:" + REDIRECT_LIST_DISTRIBUTOR_LINK;
 	}
 
 	@RequestMapping(value = LIST_DISTRIBUTOR_LINK, method = RequestMethod.GET)

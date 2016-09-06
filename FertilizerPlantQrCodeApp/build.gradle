@@ -14,6 +14,10 @@ buildscript {
 }
 
 apply plugin:'spring-boot'
+
+bootRepackage {
+    mainClass = 'org.fertilizerplant.webapp.FertilizerPlantApplication'
+}
 repositories
 {
 	jcenter()
@@ -35,4 +39,7 @@ subprojects
 			configurations.compile.each{println it}
 		}	
 	}
+
+	findMainClass.enabled = false
+	bootRepackage.enabled = false
 }

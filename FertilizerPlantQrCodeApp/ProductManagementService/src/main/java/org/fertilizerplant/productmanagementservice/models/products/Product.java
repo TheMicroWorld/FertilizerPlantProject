@@ -6,19 +6,19 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.fertilizerplant.common.base.models.BaseEntity;
 import org.fertilizerplant.productmanagementservice.models.stocklevels.StockLevel;
 
 @Entity
 @Table(name="Products")
-public class Product {
+public class Product extends BaseEntity {
 	
 	/**
 	 * Product name is the name of the product,this should be unique.One brand
@@ -26,7 +26,7 @@ public class Product {
 	 */
 	@Id
 	@Column(name="productName",nullable=false)
-	private String name;
+	private String productName;
 	
 	/**
 	 * product brand name
@@ -45,19 +45,20 @@ public class Product {
 	/**
 	 * this is the stock level of this product
 	 */
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinTable(name="Product_StockLevels",
 			joinColumns = @JoinColumn(name="productId"),
 	        inverseJoinColumns=@JoinColumn(name="stockLevelId")
 	          )
 	private Set<StockLevel> stockLevels = new HashSet<StockLevel>();
 
-	public String getName() {
-		return name;
+
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public String getUnitName() {
@@ -91,6 +92,4 @@ public class Product {
 	public void setSpecification(String specification) {
 		this.specification = specification;
 	}
-	
-	
 }

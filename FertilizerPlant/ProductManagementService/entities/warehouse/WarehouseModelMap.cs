@@ -15,7 +15,7 @@ namespace ProductManagementService.entities.warehouse
             Table("Warehouses");
             Id(c => c.Id, map =>
             {
-                map.Generator(Generators.Identity);
+                map.Generator(Generators.Assigned);
                 map.Column("WarehouseId");
             });
             Property(c => c.Address);

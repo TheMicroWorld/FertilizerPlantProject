@@ -14,3 +14,4 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementS
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.csprojResolveAssemblyReference.cache
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\obj\Debug\UserManagementService.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\UserManagementService\bin\Debug\UserManagementService.dll.config

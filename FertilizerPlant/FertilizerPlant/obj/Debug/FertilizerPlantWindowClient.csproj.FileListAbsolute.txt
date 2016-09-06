@@ -3,10 +3,12 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\FertilizerPlant.exe
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\FertilizerPlant.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Core.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\DatabaseSynchronizationService.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Iesi.Collections.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Newtonsoft.Json.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\NHibernate.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\ProductManagementService.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\QrCodeManagementService.dll
@@ -15,6 +17,7 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\System.Windows.Interactivity.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\UserManagementService.dll
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Core.pdb
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\DatabaseSynchronizationService.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\ProductManagementService.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\QrCodeManagementService.pdb
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\SerialIO.pdb
@@ -23,6 +26,7 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Newtonsoft.Json.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\NHibernate.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\System.Data.SQLite.xml
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\de\System.Windows.Interactivity.resources.dll
@@ -48,5 +52,3 @@ E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\obj\Debug\FertilizerPlantWindowClient.csproj.GenerateResource.Cache
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\obj\Debug\FertilizerPlant.exe
 E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\obj\Debug\FertilizerPlant.pdb
-E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Newtonsoft.Json.dll
-E:\career\fertilizerplant\FertilizerPlantProject\FertilizerPlant\FertilizerPlant\bin\Debug\Newtonsoft.Json.xml

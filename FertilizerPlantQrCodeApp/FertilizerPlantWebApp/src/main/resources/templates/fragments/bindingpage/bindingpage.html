@@ -1,0 +1,53 @@
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="fragment_binding_page" th:fragment="binding_page">
+		<div class="container">
+			<label th:text="#{bindingpage.product.header.label}">产品信息</label>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th th:text="#{product.list.table.product.brandName}">品牌名称</th>
+							<th th:text="#{product.list.table.product.productName}">产品名称</th>
+							<th th:text="#{product.list.table.product.specification}">产品规格</th>
+							<th th:text="#{product.list.table.product.unit}">单位</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td th:text="${product.brandName != null}? ${product.brandName} : '未绑定'" ></td>
+							<td th:text="${product.productName} ? ${product.productName} : '未绑定'"></td>
+							<td th:text="${product.specification} ? ${product.specification} : '未绑定'"></td>
+							<td th:text="${product.unitName} ? ${product.unitName} : '未绑定'"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<label th:text="#{bindingpage.distributor.header.label}">经销商信息</label>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th th:text="#{distributor.list.table.distributor.name}">姓名</th>
+							<th th:text="#{distributor.list.table.distributor.address}">地址</th>
+							<th th:text="#{distributor.list.table.distributor.phoneNumber}">电话号码</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td th:text="${distributor.name} ? ${distributor.name} : '未绑定'"></td>
+							<td th:text="${distributor.address} ? ${distributor.address} : '未绑定'"></td>
+							<td th:text="${distributor.phoneNumber} ? ${distributor.phoneNumber} : '未绑定'"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

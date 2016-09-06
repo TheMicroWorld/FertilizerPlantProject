@@ -255,10 +255,10 @@ namespace FertilizerPlant.viewmodel.bindingpage
         public void StartMonitoringPort()
         {
             serialPort.DataReceived += DataReceivedHandler;
-            //Thread thread = new Thread(() => StartBinding());
-            //thread.Start();
+            Thread thread = new Thread(() => StartBinding());
+            thread.Start();
 
-            Task.Run(() => StartBinding());
+            //Task.Run(() => StartBinding());
         }
 
         private SerialPort serialPort;
@@ -291,9 +291,12 @@ namespace FertilizerPlant.viewmodel.bindingpage
                 {
                     int count = collectedQrCodes.Count;
                     while (count != 0)
-                    {        
+                    {
+                        //I can actually get the t selected product name,and distributor id
                         Console.Write(collectedQrCodes[count - 1]);
-                        //bindingService.BindProductWithDistributor(collectedQrCodes[count - 1], selectedProduct, selectedDistributor);
+                        string scannedResult = collectedQrCodes[count - 1];
+                        scannedResult = scannedResult.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
+                        bindingService.BindProductWithDistributor(scannedResult, selectedProduct, selectedDistributor);
                         collectedQrCodes.RemoveAt(count - 1);
                         count = collectedQrCodes.Count;
                         BindedCount = BindedCount + 1;

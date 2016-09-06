@@ -10,9 +10,10 @@ namespace ProductManagementService.services
     public interface ProductService
     {
         IList<ProductModel> GetAll();
+
+        ProductModel FindById(string id);
         IList<string> GetAllProductNames();
         void Add(ProductModel product);
-
-        ProductModel FindByProductName(string productName);
+        void BulkSave(IList<ProductModel> products);
     }
 }

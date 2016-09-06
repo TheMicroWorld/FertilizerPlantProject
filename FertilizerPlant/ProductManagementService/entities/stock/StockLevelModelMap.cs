@@ -15,7 +15,7 @@ namespace ProductManagementService.entities.stock
             Table("StockLevels");
             Id(c => c.Id, map =>
             {
-                map.Generator(Generators.Identity);
+                map.Generator(Generators.Assigned);
                 map.Column("StockLevelId");
             });
             Property(c => c.Amount);
